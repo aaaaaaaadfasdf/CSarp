@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.Numerics;
 using System.Security.Cryptography.X509Certificates;
 using System.Runtime.CompilerServices;
+using System.Data;
 
 
 
@@ -25,11 +26,20 @@ partial  class    MainProgram: Form
     int[,] Map;
 
 
-    private int xPosition = 0;
-    private int xSpeed = 5;
+
+int[,] Creature;
+
 
     public void Animation()
     {
+
+
+    Vector3 Data =new Vector3(Pop);
+   
+for(int i = 0;i<Data.Length();i++){
+    Creature =
+    Data[i] =
+}
 
         DoubleBuffered = true;
 
@@ -38,6 +48,8 @@ partial  class    MainProgram: Form
         GridSpace = WindowSizeX / GridX;
 
         Pos = new int[Pop, 2];
+
+        
 
         for (int i = 0; i < Pop; i++)
         {

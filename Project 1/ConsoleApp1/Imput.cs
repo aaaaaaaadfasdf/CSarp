@@ -12,21 +12,70 @@ using System.Data;
 partial  class    MainProgram: Form
 {
 
-public class Imput{
+
 
     
-void DirectionV( int x, int y){
+int DirectionN( int x, int y){
     int c=0;
 
        while(true){
         c+=1;
+        if(x+c>=GridX){
+             return c;
+        }
         if(!(Map[x+c,y]==0)){
-            break;
+            return c;
         }
        }
 }
    
 
+int DirectionO( int x, int y){
+    int c=0;
+
+       while(true){
+        c+=1;
+        if(y+c>=GridY){
+             return c;
+        }
+        if(!(Map[x,y+c]==0)){
+            return c;
+        }
+       }
 }
+
+int DirectionS( int x, int y){
+    int c=0;
+
+       while(true){
+        c+=1;
+           if(x-c<0){
+             return c;
+        }
+        if(!(Map[x-c,y]==0)){
+            return c;
+        }
+       }
+}
+
+int DirectionW( int x, int y){
+    int c=0;
+
+       while(true){
+        c+=1;
+         if(y-c<0){
+             return c;
+        }
+        if(!(Map[x,y-c]==0)){
+            return c;
+        }
+       }
+}
+
+
+
+
+
+
 
 }
