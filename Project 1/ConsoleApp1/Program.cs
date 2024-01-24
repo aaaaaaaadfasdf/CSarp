@@ -5,18 +5,48 @@ using System.Numerics;
 using System.Security.Cryptography.X509Certificates;
 using System.Runtime.CompilerServices;
 using System.Data;
+using System.ComponentModel.Composition;
+
+struct Grid {
+    public static int size = 5;
+    public static int x = 500;
+    public static int y  = 100;
+    public static int space = Window.x / x;
+
+ 
+}
+
+struct Window{
+public static int x = Grid.x * Grid.size;
+public static int y = Grid.y * Grid.size;
+
+}
 
 
+
+struct Data{
+    
+    public static List<float> data = [];
+    public static List<float> position = [];
+    public static List<float> creatur = [];
+
+    public static int<float> 
+
+    public static void MakeArray(){
+
+
+
+List<int> intList = new();
+       
+
+
+    }
+}
 
 partial  class    MainProgram: Form
 {
 
-    int GridSize = 5; //px
-
-    int GridX = 500;
-    int GridY = 100;
-    int WindowSizeX;
-    int WindowSizeY;
+   
 
     int GridSpace;
     Random r = new Random();
@@ -36,14 +66,13 @@ int[,] Creature;
 
     Vector3 Data =new Vector3(Pop);
    
-for(int i = 0;i<Data.Length();i++){
-    Creature =
-    Data[i] =
+for(int i = 0;i<Pop;i++){
+  Data.push
 }
 
         DoubleBuffered = true;
 
-        WindowSizeX = GridX * GridSize;
+        WindowSizeX = GridX * Grid.size;
         WindowSizeY = GridY * GridSize;
         GridSpace = WindowSizeX / GridX;
 
