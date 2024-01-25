@@ -20,7 +20,7 @@ int DirectionN( int x, int y){
 
        while(true){
         c+=1;
-        if(x+c>=GridX){
+        if(x+c>=Grid.x){
              return c;
         }
         if(!(Map[x+c,y]==0)){
@@ -35,7 +35,7 @@ int DirectionO( int x, int y){
 
        while(true){
         c+=1;
-        if(y+c>=GridY){
+        if(y+c>=Grid.y){
              return c;
         }
         if(!(Map[x,y+c]==0)){

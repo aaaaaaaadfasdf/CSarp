@@ -6,6 +6,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Runtime.CompilerServices;
 using System.Data;
 using System.ComponentModel.Composition;
+using System.Configuration;
 
 struct Grid {
     public static int size = 5;
@@ -22,84 +23,144 @@ public static int y = Grid.y * Grid.size;
 
 }
 
+struct CProp{
+ public static int Pop = 100;
+
+    public static List<Creat> data = [];
+    public static int inputNum = 4;
+    public static int inputUsed = 2;
+
+    public static int autputNum = 4;
+    public static int autputUsed = 2;
+}
+
+struct Creat{
+    public int x =100;
+    public int y = 100;
+
+    public List<int> input=[];
+
+    public  List<List<float>>links = [];
+
+    public List<float> link = [];
+    
+    public List<int> output =[];
+
+    public  Creat()
+    {
+ Random r = new Random();  
+
+x = r.Next(0, Grid.x);
+y =r.Next(0, Grid.y);
+
+ for(int i =0;i<CProp.inputUsed;i++){
+        link.Add(r.Next(0, CProp.inputNum)) ;
+        link.Add(r.Next(0, 100)/100);
+        link.Add(r.Next(0, CProp.inputNum));
+        links.Add(link);
+        link.Clear();
+        Console.WriteLine($"Links {links}");
+        Console.WriteLine($"Links {link}");
+}
+
+for(int i =0;i<links.Count;i++){
+ Console.WriteLine($"{links[i][0]}");
+    input.Add((int)Math.Floor(links[i][0]));
+    output.Add((int)Math.Floor(links[0][0]));
 
 
+
+    }
+
+
+}
+}
+
+/*
 struct Data{
+
+   
+
     
     public static List<float> data = [];
     public static List<float> position = [];
     public static List<float> creatur = [];
 
-    public static int<float> 
+    public static List<float> links = [];
 
-    public static void MakeArray(){
+    public static List<float> link = [];
 
 
 
-List<int> intList = new();
+
+    public static void MakeData(){
+Random r = new Random();
+for(int i=0;i<CProp.Pop;i++){
+
+ for(int j =0;j<CProp.inputUsed;j++){
+        link = [r.Next(0, CProp.inputNum),r.Next(0, 100)/100,r.Next(0, CProp.inputNum)];
+        links.AddRange(link);
+        link.Clear();
+}
+position = [r.Next(0, Grid.x),r.Next(0, Grid.y)];
+
+creatur.AddRange(position);
+position.Clear();
+
+creatur.AddRange(links);
+links.Clear();
+
+data.AddRange(creatur);
+creatur.Clear();
+
+}
        
 
 
     }
 }
-
+*/
 partial  class    MainProgram: Form
 {
 
-   
-
-    int GridSpace;
     Random r = new Random();
-    int Pop = 1000;
-    int[,] Pos;
+    
+  
 
     int[,] Map;
 
 
 
-int[,] Creature;
 
 
-    public void Animation()
+    public  MainProgram()
     {
 
+for(int i=0;i<CProp.Pop;i++){
 
-    Vector3 Data =new Vector3(Pop);
-   
-for(int i = 0;i<Pop;i++){
-  Data.push
+CProp.data.Add(new Creat());
 }
+    
+
 
         DoubleBuffered = true;
 
-        WindowSizeX = GridX * Grid.size;
-        WindowSizeY = GridY * GridSize;
-        GridSpace = WindowSizeX / GridX;
 
-        Pos = new int[Pop, 2];
+
 
         
-
-        for (int i = 0; i < Pop; i++)
+        Map = new int[Grid.x,Grid.y];
+      for (int i = 0; i < Grid.x; i++)
         {
-            Pos[i, 0] = r.Next(0, GridX);  // Random X-coordinate (0 to Grid - 1)
-            Pos[i, 1] = r.Next(0, GridY);  // Random Y-coordinate (0 to Grid - 1)
-
-        }
-        Map = new int[GridX,GridY];
-      for (int i = 0; i < GridX; i++)
-        {
-              for (int j = 0; j < GridY; j++)
+              for (int j = 0; j < Grid.y; j++)
         {
           Map[i,j]=0;
-          if(j>GridY/2){
-            Map[i,j]=1;
-          }
+          
         }
         }
 
         // Set up the form
-        Size = new Size(WindowSizeX, WindowSizeY);
+        Size = new Size(Window.x, Window.y);
         Text = "C# Animation Example";
 
         // Create a timer to update the animation
@@ -107,20 +168,24 @@ for(int i = 0;i<Pop;i++){
         timer.Interval = 16; // Update every 16 milliseconds (approximately 60 frames per second)
         timer.Tick += Timer_Tick;
         timer.Start();
+
+
        
     }
     void MakeStep()
     {
-        for (int i = 0; i < Pop; i++)
+        for (int i = 0; i < CProp.Pop; i++)
         {
-            int x=r.Next(-1, 2);
+            Creat inc = CProp.data[i];
+            int x = r.Next(-1, 2);
             int y=r.Next(-1, 2);
-            if(!(Pos[i, 0]+x<0||Pos[i, 1]+y<0||Pos[i, 0]+x>=GridX||Pos[i, 1]+y>=GridY))
+            if(!(inc.x+x<0||inc.y+y<0||inc.x+x>=Grid.x||inc.y+y>=Grid.y))
             {
-                 //Console.WriteLine("a");
-            if(Map[Pos[i, 0]+x,Pos[i, 1]+y]==0){
-            Pos[i, 0] += x;
-            Pos[i, 1] += y;
+               
+            if(Map[inc.x+x,inc.y+y]==0){
+            inc.x += x;
+            inc.y += y;
+            CProp.data[i] = inc;
         }}
 
         }
@@ -143,19 +208,20 @@ for(int i = 0;i<Pop;i++){
         // Draw the animated element (a rectangle in this case)
         
 
-        for (int i = 0; i < Pop; i++)
+        for (int i = 0; i < CProp.Pop; i++)
         {
-            e.Graphics.FillRectangle(Brushes.Blue, new Rectangle(Pos[i, 0] * GridSpace, Pos[i, 1] * GridSpace, GridSpace, GridSpace));
+            Creat inc = CProp.data[i];
+            e.Graphics.FillRectangle(Brushes.Blue, new Rectangle(inc.x * Grid.space, inc.y * Grid.space, Grid.space, Grid.space));
 
 
         }
 
-        for (int i = 0; i < GridX; i++)
+        for (int i = 0; i < Grid.x; i++)
         {
-              for (int j = 0; j < GridY; j++)
+              for (int j = 0; j < Grid.y; j++)
         {
             if(Map[i,j]==1){
-                e.Graphics.FillRectangle(Brushes.Black, new Rectangle(i * GridSpace, j * GridSpace, GridSpace, GridSpace));
+                e.Graphics.FillRectangle(Brushes.Black, new Rectangle(i * Grid.space, j * Grid.space, Grid.space, Grid.space));
             }
           
         }
