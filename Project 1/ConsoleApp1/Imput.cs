@@ -9,8 +9,7 @@ using System.Data;
 
 
 
-partial  class    MainProgram: Form
-{
+struct Input{
 
 
 
@@ -23,10 +22,13 @@ int DirectionN( int x, int y){
         if(x+c>=Grid.x){
              return c;
         }
-        if(!(Map[x+c,y]==0)){
+        if(!(Grid.Map[x+c,y]==0)){
             return c;
         }
        }
+
+
+
 }
    
 
@@ -38,7 +40,7 @@ int DirectionO( int x, int y){
         if(y+c>=Grid.y){
              return c;
         }
-        if(!(Map[x,y+c]==0)){
+        if(!(Grid.Map[x,y+c]==0)){
             return c;
         }
        }
@@ -52,7 +54,7 @@ int DirectionS( int x, int y){
            if(x-c<0){
              return c;
         }
-        if(!(Map[x-c,y]==0)){
+        if(!(Grid.Map[x-c,y]==0)){
             return c;
         }
        }
@@ -66,16 +68,8 @@ int DirectionW( int x, int y){
          if(y-c<0){
              return c;
         }
-        if(!(Map[x,y-c]==0)){
+        if(!(Grid.Map[x,y-c]==0)){
             return c;
         }
        }
-}
-
-
-
-
-
-
-
-}
+}}
