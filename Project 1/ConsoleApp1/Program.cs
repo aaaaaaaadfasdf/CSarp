@@ -14,7 +14,30 @@ struct Grid {
     public static int y  = 100;
     public static int space = Window.x / x;
 
+    public static int[,] Map;
+
+public Grid(){
+Map = new int[x,y];
+      for (int i = 0; i < x; i++)
+        {
+              for (int j = 0; j < y; j++)
+        {
+          Map[i,j]=0;
+          
+        }
+        }
+}
+
  
+}
+struct Brain{
+
+}
+
+
+
+struct Output{
+
 }
 
 struct Window{
@@ -54,19 +77,17 @@ x = r.Next(0, Grid.x);
 y =r.Next(0, Grid.y);
 
  for(int i =0;i<CProp.inputUsed;i++){
-        link.Add(r.Next(0, CProp.inputNum)) ;
-        link.Add(r.Next(0, 100)/100);
-        link.Add(r.Next(0, CProp.inputNum));
+    link = [];
+    link  = [r.Next(0, CProp.inputNum), r.Next(0, 100)/100, r.Next(0, CProp.inputNum)];
         links.Add(link);
-        link.Clear();
-        Console.WriteLine($"Links {links}");
-        Console.WriteLine($"Links {link}");
+        
+        
 }
 
 for(int i =0;i<links.Count;i++){
- Console.WriteLine($"{links[i][0]}");
+
     input.Add((int)Math.Floor(links[i][0]));
-    output.Add((int)Math.Floor(links[0][0]));
+    output.Add((int)Math.Floor(links[i][2]));
 
 
 
@@ -74,7 +95,15 @@ for(int i =0;i<links.Count;i++){
 
 
 }
+
+ void Brain(){
+
+
 }
+
+}
+
+
 
 /*
 struct Data{
@@ -123,11 +152,11 @@ creatur.Clear();
 partial  class    MainProgram: Form
 {
 
-    Random r = new Random();
-    
+    static readonly Random r = new();
+    Grid grid = new(); // so that the constructor runs and Map is made
   
 
-    int[,] Map;
+
 
 
 
@@ -135,12 +164,12 @@ partial  class    MainProgram: Form
 
     public  MainProgram()
     {
-
+// Setup Creaturs
 for(int i=0;i<CProp.Pop;i++){
-
 CProp.data.Add(new Creat());
 }
-    
+// Map
+   
 
 
         DoubleBuffered = true;
@@ -149,15 +178,7 @@ CProp.data.Add(new Creat());
 
 
         
-        Map = new int[Grid.x,Grid.y];
-      for (int i = 0; i < Grid.x; i++)
-        {
-              for (int j = 0; j < Grid.y; j++)
-        {
-          Map[i,j]=0;
-          
-        }
-        }
+        
 
         // Set up the form
         Size = new Size(Window.x, Window.y);
@@ -182,7 +203,7 @@ CProp.data.Add(new Creat());
             if(!(inc.x+x<0||inc.y+y<0||inc.x+x>=Grid.x||inc.y+y>=Grid.y))
             {
                
-            if(Map[inc.x+x,inc.y+y]==0){
+            if(Grid.Map[inc.x+x,inc.y+y]==0){
             inc.x += x;
             inc.y += y;
             CProp.data[i] = inc;
@@ -220,7 +241,7 @@ CProp.data.Add(new Creat());
         {
               for (int j = 0; j < Grid.y; j++)
         {
-            if(Map[i,j]==1){
+            if(Grid.Map[i,j]==1){
                 e.Graphics.FillRectangle(Brushes.Black, new Rectangle(i * Grid.space, j * Grid.space, Grid.space, Grid.space));
             }
           
