@@ -102,7 +102,7 @@ partial class MainProgram : Form
     static readonly Random r = new();
     Grid grid = new(); // so that the constructor runs and Map is made
     public static Imput imput = new(); // so that the constructor runs
-    public static Output  output = new(); // so that the constructor runs
+    public static Output output = new(); // so that the constructor runs
 
 
 
@@ -119,8 +119,8 @@ partial class MainProgram : Form
             CreProp.data.Add(new Creatur());
         }
 
-       Console.Write( CreProp.data[0].links);
-       Console.Write( Grid.Map);
+        Console.Write(CreProp.data[0].links);
+        Console.Write(Grid.Map);
         // Map
 
 
@@ -174,7 +174,7 @@ partial class MainProgram : Form
     {
         // Update the animation state
 
-      for (int i = 0; i < CreProp.Pop; i++)
+        for (int i = 0; i < CreProp.Pop; i++)
         {
             CreProp.data[i].RunBrain();
         }
