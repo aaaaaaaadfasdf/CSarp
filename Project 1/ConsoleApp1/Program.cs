@@ -7,101 +7,45 @@ using System.Runtime.CompilerServices;
 using System.Data;
 using System.ComponentModel.Composition;
 using System.Configuration;
+using System.Xml;
 
-struct Grid {
+struct Grid
+{
     public static int size = 5;
     public static int x = 500;
-    public static int y  = 100;
+    public static int y = 100;
     public static int space = Window.x / x;
 
     public static int[,] Map;
 
-public Grid(){
-Map = new int[x,y];
-      for (int i = 0; i < x; i++)
-        {
-              for (int j = 0; j < y; j++)
-        {
-          Map[i,j]=0;
-          
-        }
-        }
-}
-
- 
-}
-struct Brain{
-
-}
-
-
-
-struct Output{
-
-}
-
-struct Window{
-public static int x = Grid.x * Grid.size;
-public static int y = Grid.y * Grid.size;
-
-}
-
-struct CProp{
- public static int Pop = 100;
-
-    public static List<Creat> data = [];
-    public static int inputNum = 4;
-    public static int inputUsed = 2;
-
-    public static int autputNum = 4;
-    public static int autputUsed = 2;
-}
-
-struct Creat{
-    public int x =100;
-    public int y = 100;
-
-    public List<int> input=[];
-
-    public  List<List<float>>links = [];
-
-    public List<float> link = [];
-    
-    public List<int> output =[];
-
-    public  Creat()
+    public Grid()
     {
- Random r = new Random();  
+        Map = new int[x, y];
+        for (int i = 0; i < x; i++)
+        {
+            for (int j = 0; j < y; j++)
+            {
+                Map[i, j] = 0;
 
-x = r.Next(0, Grid.x);
-y =r.Next(0, Grid.y);
-
- for(int i =0;i<CProp.inputUsed;i++){
-    link = [];
-    link  = [r.Next(0, CProp.inputNum), r.Next(0, 100)/100, r.Next(0, CProp.inputNum)];
-        links.Add(link);
-        
-        
-}
-
-for(int i =0;i<links.Count;i++){
-
-    input.Add((int)Math.Floor(links[i][0]));
-    output.Add((int)Math.Floor(links[i][2]));
-
-
-
+            }
+        }
     }
 
 
 }
 
- void Brain(){
 
+
+
+
+
+struct Window
+{
+    public static int x = Grid.x * Grid.size;
+    public static int y = Grid.y * Grid.size;
 
 }
 
-}
 
 
 
@@ -149,12 +93,16 @@ creatur.Clear();
     }
 }
 */
-partial  class    MainProgram: Form
+
+
+
+partial class MainProgram : Form
 {
 
     static readonly Random r = new();
     Grid grid = new(); // so that the constructor runs and Map is made
-  
+    public static Imput imput = new(); // so that the constructor runs
+    public static Output  output = new(); // so that the constructor runs
 
 
 
@@ -162,14 +110,19 @@ partial  class    MainProgram: Form
 
 
 
-    public  MainProgram()
+
+    public MainProgram()
     {
-// Setup Creaturs
-for(int i=0;i<CProp.Pop;i++){
-CProp.data.Add(new Creat());
-}
-// Map
-   
+        // Setup Creaturs
+        for (int i = 0; i < CreProp.Pop; i++)
+        {
+            CreProp.data.Add(new Creatur());
+        }
+
+       Console.Write( CreProp.data[0].links);
+       Console.Write( Grid.Map);
+        // Map
+
 
 
         DoubleBuffered = true;
@@ -177,8 +130,8 @@ CProp.data.Add(new Creat());
 
 
 
-        
-        
+
+
 
         // Set up the form
         Size = new Size(Window.x, Window.y);
@@ -191,32 +144,40 @@ CProp.data.Add(new Creat());
         timer.Start();
 
 
-       
+
     }
     void MakeStep()
     {
-        for (int i = 0; i < CProp.Pop; i++)
+        for (int i = 0; i < CreProp.Pop; i++)
         {
-            Creat inc = CProp.data[i];
+            Creatur inc = CreProp.data[i];
             int x = r.Next(-1, 2);
-            int y=r.Next(-1, 2);
-            if(!(inc.x+x<0||inc.y+y<0||inc.x+x>=Grid.x||inc.y+y>=Grid.y))
+            int y = r.Next(-1, 2);
+            if (!(inc.x + x < 0 || inc.y + y < 0 || inc.x + x >= Grid.x || inc.y + y >= Grid.y))
             {
-               
-            if(Grid.Map[inc.x+x,inc.y+y]==0){
-            inc.x += x;
-            inc.y += y;
-            CProp.data[i] = inc;
-        }}
+
+                if (Grid.Map[inc.x + x, inc.y + y] == 0)
+                {
+                    inc.x += x;
+                    inc.y += y;
+                    CreProp.data[i] = inc;
+                }
+            }
 
         }
 
     }
+
+
+
     private void Timer_Tick(object? sender, EventArgs e)
     {
         // Update the animation state
-       
-        MakeStep();
+
+      for (int i = 0; i < CreProp.Pop; i++)
+        {
+            CreProp.data[i].RunBrain();
+        }
 
         // Force the form to redraw
         Invalidate();
@@ -227,11 +188,11 @@ CProp.data.Add(new Creat());
         base.OnPaint(e);
 
         // Draw the animated element (a rectangle in this case)
-        
 
-        for (int i = 0; i < CProp.Pop; i++)
+
+        for (int i = 0; i < CreProp.Pop; i++)
         {
-            Creat inc = CProp.data[i];
+            Creatur inc = CreProp.data[i];
             e.Graphics.FillRectangle(Brushes.Blue, new Rectangle(inc.x * Grid.space, inc.y * Grid.space, Grid.space, Grid.space));
 
 
@@ -239,13 +200,14 @@ CProp.data.Add(new Creat());
 
         for (int i = 0; i < Grid.x; i++)
         {
-              for (int j = 0; j < Grid.y; j++)
-        {
-            if(Grid.Map[i,j]==1){
-                e.Graphics.FillRectangle(Brushes.Black, new Rectangle(i * Grid.space, j * Grid.space, Grid.space, Grid.space));
+            for (int j = 0; j < Grid.y; j++)
+            {
+                if (Grid.Map[i, j] == 1)
+                {
+                    e.Graphics.FillRectangle(Brushes.Black, new Rectangle(i * Grid.space, j * Grid.space, Grid.space, Grid.space));
+                }
+
             }
-          
-        }
         }
     }
 

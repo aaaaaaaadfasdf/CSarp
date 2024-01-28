@@ -9,20 +9,38 @@ using System.Data;
 
 
 
-struct Input{
+ struct Imput{
 
 
 
-    
-int DirectionN( int x, int y){
+     public  List<Func<Creatur,int>> imput =[];
+
+
+     
+public  Imput(){
+
+ imput = new List<Func<Creatur,int>>
+        {
+            DirectionN,
+            DirectionO,
+            DirectionS,
+            DirectionW
+        };
+
+        
+}
+
+
+
+    public static int DirectionN(Creatur inc){
     int c=0;
-
+    
        while(true){
         c+=1;
-        if(x+c>=Grid.x){
+        if(inc.x+c>=Grid.x){
              return c;
         }
-        if(!(Grid.Map[x+c,y]==0)){
+        if(!(Grid.Map[inc.x+c,inc.y]==0)){
             return c;
         }
        }
@@ -32,44 +50,45 @@ int DirectionN( int x, int y){
 }
    
 
-int DirectionO( int x, int y){
+public static int DirectionO( Creatur inc){
     int c=0;
 
        while(true){
         c+=1;
-        if(y+c>=Grid.y){
+        if(inc.y+c>=Grid.y){
              return c;
         }
-        if(!(Grid.Map[x,y+c]==0)){
+        if(!(Grid.Map[inc.x,inc.y+c]==0)){
             return c;
         }
        }
 }
 
-int DirectionS( int x, int y){
+public static int DirectionS( Creatur inc){
     int c=0;
 
        while(true){
         c+=1;
-           if(x-c<0){
+           if(inc.x-c<0){
              return c;
         }
-        if(!(Grid.Map[x-c,y]==0)){
+        if(!(Grid.Map[inc.x-c,inc.y]==0)){
             return c;
         }
        }
 }
 
-int DirectionW( int x, int y){
+public static int DirectionW( Creatur inc){
     int c=0;
 
        while(true){
         c+=1;
-         if(y-c<0){
+         if(inc.y-c<0){
              return c;
         }
-        if(!(Grid.Map[x,y-c]==0)){
+        if(!(Grid.Map[inc.x,inc.y-c]==0)){
             return c;
         }
        }
 }}
+
