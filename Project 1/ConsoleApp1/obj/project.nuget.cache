@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eTa1i4QaazYseNZi0NGSEIlCOtvTrre96iR6WiiqCNwN+LzQ9bxHlTLeINszseBviKRJfP7lDXBW3YUUzMq2Ww==",
+  "dgSpecHash": "He30C+j2VeuiLjaSvkiAGE+SvE/5vQCNIbJzZLSBLz2iCITZhzg4WlxBh+Z+YVuynGmueZ6WzHj/kO2sD1OOAw==",
   "success": true,
-  "projectFilePath": "c:\\Users\\jonat\\Desktop\\CSarp\\Project 1\\ConsoleApp1\\ConsoleApp1.csproj",
+  "projectFilePath": "C:\\Users\\jonat\\Desktop\\CSarp\\Project 1\\ConsoleApp1\\ConsoleApp1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jonat\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.1\\microsoft.netcore.platforms.5.0.1.nupkg.sha512",
     "C:\\Users\\jonat\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
