@@ -3192,7 +3192,9 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net8.0-windows7.0": ["Microsoft.Windows.Compatibility >= 5.0.2"]
+    "net8.0-windows7.0": [
+      "Microsoft.Windows.Compatibility >= 5.0.2"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\jonat\\.nuget\\packages\\": {}
@@ -3200,16 +3202,18 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jonat\\Desktop\\CSarp\\Project 1\\ConsoleApp1\\ConsoleApp1.csproj",
+      "projectUniqueName": "C:\\Users\\jonat\\OneDrive - SBL\\Desktop\\CSharp\\CSarp\\Project 1\\ConsoleApp1\\ConsoleApp1.csproj",
       "projectName": "ConsoleApp1",
-      "projectPath": "C:\\Users\\jonat\\Desktop\\CSarp\\Project 1\\ConsoleApp1\\ConsoleApp1.csproj",
+      "projectPath": "C:\\Users\\jonat\\OneDrive - SBL\\Desktop\\CSharp\\CSarp\\Project 1\\ConsoleApp1\\ConsoleApp1.csproj",
       "packagesPath": "C:\\Users\\jonat\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jonat\\Desktop\\CSarp\\Project 1\\ConsoleApp1\\obj\\",
+      "outputPath": "C:\\Users\\jonat\\OneDrive - SBL\\Desktop\\CSharp\\CSarp\\Project 1\\ConsoleApp1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\jonat\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
-      "originalTargetFrameworks": ["net8.0-windows"],
+      "originalTargetFrameworks": [
+        "net8.0-windows"
+      ],
       "sources": {
         "https://api.nuget.org/v3/index.json": {}
       },
@@ -3220,7 +3224,9 @@
         }
       },
       "warningProperties": {
-        "warnAsError": ["NU1605"]
+        "warnAsError": [
+          "NU1605"
+        ]
       }
     },
     "frameworks": {
