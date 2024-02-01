@@ -112,7 +112,7 @@ struct Creatur
 
         { for (int j = 0; j < links.Count; j++)
         {
-            if(linksProto[i].to==links[j].from){
+            if(linksProto[i].from==links[j].to&&linksProto[i].neurontypeFrom==links[j].neurontypeTo){
                 links.Add(linksProto[i]);
                 linksProto.RemoveAt(i);  // so that the same link dosent get added 2 times
                 i--;
@@ -151,10 +151,11 @@ public void RunBrain(){
             outputNeurons[links[i].to] += (float)Math.Tanh(imputValue*links[i].connection);
         }
      } 
-
+        // chose which outputnurons should fire
      for(int i =0; i<outputNeurons.Count;i++){
-        if(0<Math.Tanh(outputNeurons[links[i].to])){
-            MainProgram.output.output[i](this);
+        if(0<Math.Tanh(outputNeurons[i])){
+           x= MainProgram.output.output[i]( this).x;
+            y= MainProgram.output.output[i]( this).y;
         }
      }
 
