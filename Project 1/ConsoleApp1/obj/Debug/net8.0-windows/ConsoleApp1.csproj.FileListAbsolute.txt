@@ -248,3 +248,4 @@ C:\Users\jonat\OneDrive - SBL\Desktop\CSharp\CSarp\Project 1\ConsoleApp1\obj\Deb
 C:\Users\jonat\OneDrive - SBL\Desktop\CSharp\CSarp\Project 1\ConsoleApp1\obj\Debug\net8.0-windows\ConsoleApp1.genruntimeconfig.cache
 C:\Users\jonat\OneDrive - SBL\Desktop\CSharp\CSarp\Project 1\ConsoleApp1\obj\Debug\net8.0-windows\ref\ConsoleApp1.dll
 C:\Users\jonat\Desktop\CSarp\Project 1\ConsoleApp1\obj\Debug\net8.0-windows\ConsoleApp1.sourcelink.json
+c:\Users\jonat\OneDrive - SBL\Desktop\CSharp\CSarp\Project 1\ConsoleApp1\bin\Debug\net8.0-windows\NumSharp.dll

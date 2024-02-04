@@ -13,18 +13,19 @@ using System.Data;
 
 
 
-     public  List<Func<Creatur,int>> imput =[];
+     public  List<Func<Creatur,float>> imput =[];
 
 
      
 public  Imput(){
 
- imput = new List<Func<Creatur,int>>
+ imput = new List<Func<Creatur,float>>
         {
             DirectionN,
             DirectionO,
             DirectionS,
-            DirectionW
+            DirectionW,
+            Time
         };
 
         
@@ -32,7 +33,7 @@ public  Imput(){
 
 
 
-    public static int DirectionN(Creatur inc){
+    public static float DirectionN(Creatur inc){
     int c=0;
     
        while(true){
@@ -41,7 +42,7 @@ public  Imput(){
              return c;
         }
         if(!(Grid.Map[inc.x+c,inc.y]==0)){
-            return c;
+            return (float)c;
         }
        }
 
@@ -50,7 +51,7 @@ public  Imput(){
 }
    
 
-public static int DirectionO( Creatur inc){
+public static float DirectionO( Creatur inc){
     int c=0;
 
        while(true){
@@ -59,12 +60,12 @@ public static int DirectionO( Creatur inc){
              return c;
         }
         if(!(Grid.Map[inc.x,inc.y+c]==0)){
-            return c;
+            return (float)c;
         }
        }
 }
 
-public static int DirectionS( Creatur inc){
+public static float DirectionS( Creatur inc){
     int c=0;
 
        while(true){
@@ -73,12 +74,12 @@ public static int DirectionS( Creatur inc){
              return c;
         }
         if(!(Grid.Map[inc.x-c,inc.y]==0)){
-            return c;
+            return (float)c;
         }
        }
 }
 
-public static int DirectionW( Creatur inc){
+public static float DirectionW( Creatur inc){
     int c=0;
 
        while(true){
@@ -87,8 +88,27 @@ public static int DirectionW( Creatur inc){
              return c;
         }
         if(!(Grid.Map[inc.x,inc.y-c]==0)){
-            return c;
+            return (float)c;
         }
        }
-}}
+}
+
+
+public static float Time( Creatur inc){
+    
+
+       
+           return (float)1/MainProgram.time;        
+       
+}
+
+
+
+
+
+
+
+
+
+}
 

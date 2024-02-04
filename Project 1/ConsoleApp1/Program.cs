@@ -11,10 +11,10 @@ using System.Xml;
 
 struct Grid
 {
-    public static int size = 5;
+    public static int size = 2;
     public static int x = 500;
-    public static int y = 100;
-    public static int space = Window.x / x;
+    public static int y = 500;
+    public static float space =(float)(Window.x / (x)) ;
 
     public static int[,] Map;
 
@@ -25,7 +25,13 @@ struct Grid
         {
             for (int j = 0; j < y; j++)
             {
-                Map[i, j] = 0;
+                
+
+                if(j==50||i==50){
+                    Map[i, j] = 1;
+                }else{
+                    Map[i, j] = 0;
+                }
 
             }
         }
@@ -104,6 +110,8 @@ partial class MainProgram : Form
     public static Imput imput = new(); // so that the constructor runs
     public static Output output = new(); // so that the constructor runs
 
+    public static float time=0;
+
 
 
 
@@ -119,8 +127,7 @@ partial class MainProgram : Form
             CreProp.data.Add(new Creatur());
         }
 
-        Console.Write(CreProp.data[0].links);
-        Console.Write(Grid.Map);
+
         // Map
 
 
@@ -141,33 +148,13 @@ partial class MainProgram : Form
         System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
         timer.Interval = 16; // Update every 16 milliseconds (approximately 60 frames per second)
         timer.Tick += Timer_Tick;
+        time+=timer.Interval/1000;
         timer.Start();
 
 
 
     }
-    void MakeStep()
-    {
-        for (int i = 0; i < CreProp.Pop; i++)
-        {
-            Creatur inc = CreProp.data[i];
-            int x = r.Next(-1, 2);
-            int y = r.Next(-1, 2);
-            if (!(inc.x + x < 0 || inc.y + y < 0 || inc.x + x >= Grid.x || inc.y + y >= Grid.y))
-            {
-
-                if (Grid.Map[inc.x + x, inc.y + y] == 0)
-                {
-                    inc.x += x;
-                    inc.y += y;
-                    CreProp.data[i] = inc;
-                }
-            }
-
-        }
-
-    }
-
+   
 
 
     private void Timer_Tick(object? sender, EventArgs e)
@@ -176,7 +163,7 @@ partial class MainProgram : Form
 
         for (int i = 0; i < CreProp.Pop; i++)
         {
-            CreProp.data[i].RunBrain();
+            CreProp.data[i]=CreProp.data[i].RunBrain();
         }
 
         // Force the form to redraw
@@ -193,7 +180,7 @@ partial class MainProgram : Form
         for (int i = 0; i < CreProp.Pop; i++)
         {
             Creatur inc = CreProp.data[i];
-            e.Graphics.FillRectangle(Brushes.Blue, new Rectangle(inc.x * Grid.space, inc.y * Grid.space, Grid.space, Grid.space));
+            e.Graphics.FillRectangle(Brushes.Blue, new Rectangle((int)(inc.x * Grid.space), (int)(inc.y * Grid.space), (int)Grid.space, (int)Grid.space));
 
 
         }
@@ -204,7 +191,7 @@ partial class MainProgram : Form
             {
                 if (Grid.Map[i, j] == 1)
                 {
-                    e.Graphics.FillRectangle(Brushes.Black, new Rectangle(i * Grid.space, j * Grid.space, Grid.space, Grid.space));
+                    e.Graphics.FillRectangle(Brushes.Black, new Rectangle((int)(i * Grid.space), (int)(j * Grid.space), (int)Grid.space, (int)Grid.space));
                 }
 
             }

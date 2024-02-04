@@ -1,5 +1,6 @@
 
-
+using NumSharp;
+using System.Data;
 using System.Security.Cryptography.X509Certificates;
 
 struct Output
@@ -40,7 +41,11 @@ struct Output
         if (!(inc.x + x < 0 || inc.y + y < 0 || inc.x + x >= Grid.x || inc.y + y >= Grid.y))
         {
 
+if(Grid.Map[inc.x+x,inc.y+y]==0){
+
             inc.x += 1;
+       }
+            
 
 
         }
@@ -63,7 +68,12 @@ struct Output
         if (!(inc.x + x < 0 || inc.y + y < 0 || inc.x + x >= Grid.x || inc.y + y >= Grid.y))
         {
 
+if(Grid.Map[inc.x+x,inc.y+y]==0){
+
             inc.y += 1;
+       }
+
+            
 
 
         }
@@ -78,8 +88,12 @@ struct Output
 
         if (!(inc.x + x < 0 || inc.y + y < 0 || inc.x + x >= Grid.x || inc.y + y >= Grid.y))
         {
+            if(Grid.Map[inc.x+x,inc.y+y]==0){
 
             inc.x += -1;
+       }
+
+            
 
 
         }
@@ -94,8 +108,10 @@ struct Output
 
         if (!(inc.x + x < 0 || inc.y + y < 0 || inc.x + x >= Grid.x || inc.y + y >= Grid.y))
         {
+            if(Grid.Map[inc.x+x,inc.y+y]==0){
 
             inc.y -= 1;
+       }
 
 
         }
