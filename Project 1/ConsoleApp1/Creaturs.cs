@@ -1,6 +1,7 @@
 using Microsoft.VisualBasic;
 using NumSharp;
-struct CreProp
+
+ struct CreProp
 {   
 
     public static Random r = new Random();
@@ -8,7 +9,8 @@ struct CreProp
 
     public static List<Creatur> data = [];
 
-  
+    
+
 
     
 
@@ -31,8 +33,11 @@ struct Creatur
     public int y = 100;
 
 
-
+NDArray imputVektor ;
     NDArray imputNetwork ;
+
+
+
         NDArray network ;
     NDArray outputNetwork ;
 
@@ -64,15 +69,22 @@ struct Creatur
        Random r = new Random();
 
 
-         imputNetwork = np.arange(r.Next(0,2)*r.NextDouble()).reshape(MainProgram.imput.imput.Count,CreProp.neuronsPerLayer);
-         network =  np.arange(r.Next(0,2)*r.NextDouble()).reshape(0,10,3);
-         outputNetwork = np.arange(r.Next(0,2)*r.NextDouble()).reshape(CreProp.neuronsPerLayer,MainProgram.output.output.Count);
+         imputNetwork = np.random.rand(CreProp.neuronsPerLayer, CreProp.hiddenLayers);
 
+        for ( int i =0; i< imputNetwork.shape[0]; i++){
+            for ( int j =0; j< imputNetwork.shape[1]; j++){
+                imputNetwork[i][j] = (float)Math.Round(r.NextDouble())*r.NextDouble();
+            }
+        }
 
-    
         
-            MakeBrain();
+network = np.random.rand(CreProp.neuronsPerLayer, CreProp.hiddenLayers);
 
+        for ( int i =0; i< network.shape[0]; i++){
+            for ( int j =0; j< network.shape[1]; j++){
+                network[i][j] = (float)Math.Round(r.NextDouble())*r.NextDouble();
+            }
+        }
 
 
 
