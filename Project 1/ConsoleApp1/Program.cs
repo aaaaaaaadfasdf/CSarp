@@ -8,6 +8,8 @@ using System.Data;
 using System.ComponentModel.Composition;
 using System.Configuration;
 using System.Xml;
+using NumSharp;
+
 
 struct Grid
 {

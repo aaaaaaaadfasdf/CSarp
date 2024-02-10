@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\jonat\\OneDrive - SBL\\Desktop\\CSharp\\CSarp\\Project 1\\ConsoleApp1\\ConsoleApp1.csproj": {}
+    "C:\\Users\\jonat\\OneDrive - SBL\\Desktop\\CSharp\\CSarp\\Project 1\\ConsoleApp1\\ConsoleApp1.csproj": {}
   },
   "projects": {
-    "c:\\Users\\jonat\\OneDrive - SBL\\Desktop\\CSharp\\CSarp\\Project 1\\ConsoleApp1\\ConsoleApp1.csproj": {
+    "C:\\Users\\jonat\\OneDrive - SBL\\Desktop\\CSharp\\CSarp\\Project 1\\ConsoleApp1\\ConsoleApp1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\jonat\\OneDrive - SBL\\Desktop\\CSharp\\CSarp\\Project 1\\ConsoleApp1\\ConsoleApp1.csproj",
+        "projectUniqueName": "C:\\Users\\jonat\\OneDrive - SBL\\Desktop\\CSharp\\CSarp\\Project 1\\ConsoleApp1\\ConsoleApp1.csproj",
         "projectName": "ConsoleApp1",
-        "projectPath": "c:\\Users\\jonat\\OneDrive - SBL\\Desktop\\CSharp\\CSarp\\Project 1\\ConsoleApp1\\ConsoleApp1.csproj",
+        "projectPath": "C:\\Users\\jonat\\OneDrive - SBL\\Desktop\\CSharp\\CSarp\\Project 1\\ConsoleApp1\\ConsoleApp1.csproj",
         "packagesPath": "C:\\Users\\jonat\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\jonat\\OneDrive - SBL\\Desktop\\CSharp\\CSarp\\Project 1\\ConsoleApp1\\obj\\",
+        "outputPath": "C:\\Users\\jonat\\OneDrive - SBL\\Desktop\\CSharp\\CSarp\\Project 1\\ConsoleApp1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jonat\\AppData\\Roaming\\NuGet\\NuGet.Config"
