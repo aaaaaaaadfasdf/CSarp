@@ -1,121 +1,82 @@
-
-using NumSharp;
+using System;
 using System.Data;
 using System.Security.Cryptography.X509Certificates;
+using NumSharp;
 
-struct Output
+partial struct Creatur
 {
+    public  List<Action> output = [];
 
-
-
-    public List<Func<Creatur, Creatur>> output = [];
-
-
-
-    public Output()
+    public void OutputCons()
     {
-
-        output = new List<Func<Creatur,Creatur>>
-        
+        output = new List<Action>
         {
             DirectionN,
             DirectionO,
             DirectionS,
             DirectionW
         };
-
-
     }
 
 
-
-    public static Creatur DirectionN(Creatur inc)
-    {
-
-        
-        
-        int x = 1;
-        int y = 0;
-
-
-        if (!(inc.x + x < 0 || inc.y + y < 0 || inc.x + x >= Grid.x || inc.y + y >= Grid.y))
+        public  void DirectionN()
         {
+            int xx = 1;
+            int yy = 0;
 
-if(Grid.Map[inc.x+x,inc.y+y]==0){
-
-            inc.x += 1;
-       }
-            
-
-
+            if (!( x + xx < 0 ||  y + yy < 0 ||  x + xx >= Grid.x ||  y + yy >= Grid.y))
+            {
+                if (Grid.Map[ x + xx,  y + yy] == 0)
+                {
+                     x += 1;
+                }
+            }
+          
         }
-        return inc;
 
-
-
-
-
-    }
-
-
-    public static Creatur DirectionO(Creatur inc)
-    {
-
-        int x = 0;
-        int y = 1;
-
-
-        if (!(inc.x + x < 0 || inc.y + y < 0 || inc.x + x >= Grid.x || inc.y + y >= Grid.y))
+        public  void DirectionO()
         {
+            int xx = 0;
+            int yy = 1;
 
-if(Grid.Map[inc.x+x,inc.y+y]==0){
-
-            inc.y += 1;
-       }
-
-            
-
-
+            if (!( x + xx < 0 ||  y + yy < 0 ||  x + xx >= Grid.x ||  y + yy >= Grid.y))
+            {
+                if (Grid.Map[ x + xx,  y + yy] == 0)
+                {
+                     y += 1;
+                }
+            }
+          
         }
-        return inc;
-    }
 
-    public static Creatur DirectionS(Creatur inc)
-    {
-     int x = -1;
-     int y = 0;
-
-
-        if (!(inc.x + x < 0 || inc.y + y < 0 || inc.x + x >= Grid.x || inc.y + y >= Grid.y))
+        public void  DirectionS()
         {
-            if(Grid.Map[inc.x+x,inc.y+y]==0){
+            int xx = -1;
+            int yy = 0;
 
-            inc.x += -1;
-       }
-
-            
-
-
+            if (!( x + xx < 0 ||  y + yy < 0 ||  x + xx >= Grid.x ||  y + yy >= Grid.y))
+            {
+                if (Grid.Map[ x + xx,  y + yy] == 0)
+                {
+                     x += -1;
+                }
+            }
+           
         }
-        return inc;
-    }
 
-    public static Creatur DirectionW(Creatur inc)
-    {
-        int x = 0;
-        int y = -1;
-
-
-        if (!(inc.x + x < 0 || inc.y + y < 0 || inc.x + x >= Grid.x || inc.y + y >= Grid.y))
+        public  void DirectionW()
         {
-            if(Grid.Map[inc.x+x,inc.y+y]==0){
+            int xx = 0;
+            int yy = -1;
 
-            inc.y -= 1;
-       }
-
-
+            if (!( x + xx < 0 ||  y + yy < 0 ||  x + xx >= Grid.x ||  y + yy >= Grid.y))
+            {
+                if (Grid.Map[ x + xx,  y + yy] == 0)
+                {
+                     y -= 1;
+                }
+            }
+          
         }
-        return inc;
     }
-}
 
