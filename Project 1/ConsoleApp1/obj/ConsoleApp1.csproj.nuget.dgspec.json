@@ -38,6 +38,10 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "dependencies": {
+            "MathNet.Numerics": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
             "Microsoft.Windows.Compatibility": {
               "target": "Package",
               "version": "[5.0.2, )"

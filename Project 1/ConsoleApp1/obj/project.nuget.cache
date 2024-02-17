@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "IYi7o2AFtyyxmmI2HDzgNdxY4Xfp40/hhddaacZGuGXtRCBfgtxIpSZvOk51pHEGiT7fv0oLONWBYI4MpnznSQ==",
+  "dgSpecHash": "zVzXfRb/WHRueaTati9e7UiOr0o7ShdOpDNMGOSPslb4gOLhu8PFDNRna42IJSCnO8FmNmRc0WzY1eCKDUS28A==",
   "success": true,
-  "projectFilePath": "c:\\Users\\jonat\\OneDrive - SBL\\Desktop\\CSharp\\CSarp\\Project 1\\ConsoleApp1\\ConsoleApp1.csproj",
+  "projectFilePath": "C:\\Users\\jonat\\OneDrive - SBL\\Desktop\\CSharp\\CSarp\\Project 1\\ConsoleApp1\\ConsoleApp1.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\jonat\\.nuget\\packages\\mathnet.numerics\\5.0.0\\mathnet.numerics.5.0.0.nupkg.sha512",
     "C:\\Users\\jonat\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.1\\microsoft.netcore.platforms.5.0.1.nupkg.sha512",
     "C:\\Users\\jonat\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\jonat\\.nuget\\packages\\microsoft.win32.registry.accesscontrol\\5.0.0\\microsoft.win32.registry.accesscontrol.5.0.0.nupkg.sha512",
@@ -67,5 +68,12 @@
     "C:\\Users\\jonat\\.nuget\\packages\\system.threading.accesscontrol\\5.0.0\\system.threading.accesscontrol.5.0.0.nupkg.sha512",
     "C:\\Users\\jonat\\.nuget\\packages\\system.windows.extensions\\5.0.0\\system.windows.extensions.5.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\jonat\\OneDrive - SBL\\Desktop\\CSharp\\CSarp\\Project 1\\ConsoleApp1\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
