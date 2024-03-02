@@ -3,7 +3,7 @@ using System.Data;
 using System.Security.Cryptography.X509Certificates;
 using NumSharp;
 
-partial struct Creatur
+public partial class Creatur
 {
     public  List<Action> output = [];
 

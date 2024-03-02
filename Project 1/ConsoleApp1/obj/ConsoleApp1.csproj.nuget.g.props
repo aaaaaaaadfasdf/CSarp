@@ -12,4 +12,11 @@
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <SourceRoot Include="C:\Users\jonat\.nuget\packages\" />
   </ItemGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)ilnumerics.tools.codetransforms\6.0.148\buildTransitive\netstandard2.0\ILNumerics.Tools.CodeTransforms.props" Condition="Exists('$(NuGetPackageRoot)ilnumerics.tools.codetransforms\6.0.148\buildTransitive\netstandard2.0\ILNumerics.Tools.CodeTransforms.props')" />
+  </ImportGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\jonat\.nuget\packages\microsoft.codeanalysis.analyzers\3.3.3</PkgMicrosoft_CodeAnalysis_Analyzers>
+    <PkgILNumerics_Tools_CodeTransforms Condition=" '$(PkgILNumerics_Tools_CodeTransforms)' == '' ">C:\Users\jonat\.nuget\packages\ilnumerics.tools.codetransforms\6.0.148</PkgILNumerics_Tools_CodeTransforms>
+  </PropertyGroup>
 </Project>

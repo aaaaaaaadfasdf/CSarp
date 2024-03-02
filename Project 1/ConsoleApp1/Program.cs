@@ -1,186 +1,152 @@
-﻿using System;
-using System.ComponentModel.Composition;
-using System.Configuration;
-using System.Data;
-using System.Drawing;
-using System.Numerics;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
-using System.Windows.Forms;
-using System.Xml;
-using NumSharp;
+﻿
+using System.Globalization;
+using System.Reflection;
+using MathNet.Numerics.LinearAlgebra;
 
-struct Grid
+
+ static partial class Control
 {
-    public static int size = 2;
-    public static int x = 500;
-    public static int y = 500;
-    public static float space = (float)(Window.x / (x));
+    public const int size = 800;
+    public const int pop = 1000;
+    public const int gridx = 100;
+    public const int gridy = 100;
 
-    public static int[,] Map;
+    static int generationCount = 0;
+    static int stepCount = 0;
 
-    public Grid()
-    {
-        Map = new int[x, y];
-        for (int i = 0; i < x; i++)
-        {
-            for (int j = 0; j < y; j++)
-            {
-                if (j == 50 || i == 50)
-                {
-                    Map[i, j] = 1;
-                }
-                else
-                {
-                    Map[i, j] = 0;
-                }
-            }
-        }
-    }
-}
+    public static int generationLength = 100;
 
-struct Window
-{
-    public static int x = Grid.x * Grid.size;
-    public static int y = Grid.y * Grid.size;
-}
 
-/*
-struct Data{
 
-   
+    public static string folderDirectory;
+    static readonly DateTime currentTime = DateTime.Now;
+
+
+
+
 
     
-    public static List<float> data = [];
-    public static List<float> position = [];
-    public static List<float> creatur = [];
-
-    public static List<float> links = [];
-
-    public static List<float> link = [];
+    public static List<Creatur> data = [];
 
 
 
+    public static string mainDirectory = "C:\\Users\\jonat\\OneDrive - SBL\\Desktop\\SaveFolder";//"C:\\Users\\jonat\\OneDrive - SBL\\Dokumente\\SaveFolder";// AppDomain.CurrentDomain.BaseDirectory;
 
-    public static void MakeData(){
-Random r = new Random();
-for(int i=0;i<CProp.Pop;i++){
-
- for(int j =0;j<CProp.inputUsed;j++){
-        link = [r.Next(0, CProp.inputNum),r.Next(0, 100)/100,r.Next(0, CProp.inputNum)];
-        links.AddRange(link);
-        link.Clear();
-}
-position = [r.Next(0, Grid.x),r.Next(0, Grid.y)];
-
-creatur.AddRange(position);
-position.Clear();
-
-creatur.AddRange(links);
-links.Clear();
-
-data.AddRange(creatur);
-creatur.Clear();
-
-}
-       
+    static Random r = new();
 
 
-    }
-}
-*/
-
-
-
-partial class MainProgram : Form
-{
-    static readonly Random r = new();
-    Grid grid = new(); // so that the constructor runs and Map is made
-
-    public static float time = 0;
-
-    public MainProgram()
+    static void Main(string[] args)
     {
-        // Setup Creaturs
-        for (int i = 0; i < Creatur.Pop; i++)
+        Console.WriteLine("Welcome to MyProgram!");
+        Setup();
+
+        while (true)
         {
-            CreProp.data.Add(new Creatur());
-        }
+            Console.Write("Enter a function call (e.g., myfunction(1, 4)): ");
+            string input = Console.ReadLine();
 
-        // Map
-
-
-
-        DoubleBuffered = true;
-
-        // Set up the form
-        Size = new Size(Window.x, Window.y);
-        Text = "C# Animation Example";
-
-        // Create a timer to update the animation
-        System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-        timer.Interval = 16; // Update every 16 milliseconds (approximately 60 frames per second)
-        timer.Tick += Timer_Tick;
-        time += timer.Interval / 1000;
-        timer.Start();
-    }
-
-    private void Timer_Tick(object? sender, EventArgs e)
-    {
-        // Update the animation state
-
-        for (int i = 0; i < Creatur.Pop; i++)
-        {
-            CreProp.data[i].RunBrain();
-        }
-
-        // Force the form to redraw
-        Invalidate();
-    }
-
-    protected override void OnPaint(PaintEventArgs e)
-    {
-        base.OnPaint(e);
-
-        // Draw the animated element (a rectangle in this case)
-
-
-        for (int i = 0; i < Creatur.Pop; i++)
-        {
-            Creatur inc = CreProp.data[i];
-            e.Graphics.FillRectangle(
-                Brushes.Blue,
-                new Rectangle(
-                    (int)(inc.x * Grid.space),
-                    (int)(inc.y * Grid.space),
-                    (int)Grid.space,
-                    (int)Grid.space
-                )
-            );
-        }
-
-        for (int i = 0; i < Grid.x; i++)
-        {
-            for (int j = 0; j < Grid.y; j++)
+            // Parse the function call
+            if (TryParseFunctionCall(input, out string functionName, out object[] arguments))
             {
-                if (Grid.Map[i, j] == 1)
-                {
-                    e.Graphics.FillRectangle(
-                        Brushes.Black,
-                        new Rectangle(
-                            (int)(i * Grid.space),
-                            (int)(j * Grid.space),
-                            (int)Grid.space,
-                            (int)Grid.space
-                        )
-                    );
-                }
+                // Invoke the function dynamically
+                InvokeFunction(functionName, arguments);
+            }
+            else
+            {
+                Console.WriteLine("Invalid function call. Try again.");
             }
         }
     }
 
-    public static void Main() // <-- Entry point
+    public static void Setup()
     {
-        Application.Run(new MainProgram());
+
+        Grid.MakeGrid();
+        // Add Creaturs
+        for (int i = 0; i < pop; i++)
+        {
+            data.Add(new Creatur());
+        }
+
     }
+
+    static void Run( int generationEnd)
+    {
+
+        // to make shure that all the count variables are set to 0
+        generationCount =0;
+        stepCount = 0;
+        
+
+        SaveThisRun();
+
+        while (generationCount < generationEnd)
+        {
+            
+
+            MakeGen(generationLength, generationEnd);
+            generationCount += 1;
+          
+        }
+        generationCount = 0;
+
+    }
+    public static void MakeGen(int generationLength, int generationEnd)
+    {
+        
+
+        //Make a Folder to Store Data
+        SaveGen();
+        // Randomly distribiute
+        for (int i = 0; i < data.Count; i++)
+        {
+            data[i].x = r.Next(Grid.x);
+            data[i].y = r.Next(Grid.y);
+        }
+        if (true)
+        {
+            // Run Gen
+            while (stepCount < generationLength)
+            {
+                SaveStep();
+                for (int j = 0; j < pop; j++)
+                {
+                    data[j].RunBrain();
+
+
+
+                }
+                stepCount += 1;
+
+            }
+            stepCount = 0;
+
+        }
+
+        // look condition
+        for (int i = 0; i < data.Count; i++)
+        {
+            if (data[i].x < Grid.x / 2)
+            {
+                data.RemoveAt(i);
+            }
+        }
+        // fill up
+        while (pop > data.Count)
+        {
+            data.Add(data[r.Next(data.Count)]);
+        }
+
+        //ramdomize position
+        for (int i = 0; i < pop; i++)
+        {
+            data[i].MutateBrain();
+        }
+        Console.WriteLine(generationCount + " of " + generationEnd);
+
+
+
+    }
+
 }
+

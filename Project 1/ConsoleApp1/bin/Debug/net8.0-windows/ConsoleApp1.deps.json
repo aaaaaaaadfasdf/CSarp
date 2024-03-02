@@ -8,19 +8,184 @@
     ".NETCoreApp,Version=v8.0": {
       "ConsoleApp1/1.0.0": {
         "dependencies": {
+          "Accord": "3.8.0",
+          "ILNumerics.Core": "6.0.148",
           "MathNet.Numerics": "5.0.0",
           "Microsoft.Windows.Compatibility": "5.0.2",
-          "NumSharp": "0.30.0"
+          "Newtonsoft.Json": "13.0.3",
+          "NumSharp": "0.30.0",
+          "OpenTK": "4.8.2"
         },
         "runtime": {
           "ConsoleApp1.dll": {}
         }
       },
+      "Accord/3.8.0": {
+        "runtime": {
+          "lib/netstandard2.0/Accord.dll": {
+            "assemblyVersion": "3.8.0.0",
+            "fileVersion": "3.8.0.6134"
+          }
+        }
+      },
+      "ILNumerics.Core/6.0.148": {
+        "dependencies": {
+          "ILNumerics.Core.Platforms": "6.0.148",
+          "ILNumerics.Core.Runtime": "6.0.148",
+          "ILNumerics.Tools.CodeTransforms": "6.0.148",
+          "Microsoft.CodeAnalysis.CSharp": "4.1.0",
+          "System.Configuration.ConfigurationManager": "5.0.0",
+          "System.Drawing.Common": "5.0.2",
+          "System.Management": "5.0.0",
+          "System.Memory": "4.5.4",
+          "System.Numerics.Vectors": "4.5.0",
+          "System.Runtime.CompilerServices.Unsafe": "5.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.1/ILNumerics.Core.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.148.3832"
+          }
+        }
+      },
+      "ILNumerics.Core.Platforms/6.0.148": {
+        "dependencies": {
+          "Microsoft.Win32.Registry": "5.0.0",
+          "System.Diagnostics.EventLog": "5.0.1",
+          "System.Security.Permissions": "5.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.1/ILNumerics.Core.Platforms.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.148.3832"
+          }
+        }
+      },
+      "ILNumerics.Core.Runtime/6.0.148": {
+        "runtime": {
+          "lib/netstandard2.1/ILNumerics.Core.Runtime.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.148.3832"
+          }
+        }
+      },
+      "ILNumerics.Tools.CodeTransforms/6.0.148": {},
       "MathNet.Numerics/5.0.0": {
         "runtime": {
           "lib/net6.0/MathNet.Numerics.dll": {
             "assemblyVersion": "5.0.0.0",
             "fileVersion": "5.0.0.0"
+          }
+        }
+      },
+      "Microsoft.CodeAnalysis.Analyzers/3.3.3": {},
+      "Microsoft.CodeAnalysis.Common/4.1.0": {
+        "dependencies": {
+          "Microsoft.CodeAnalysis.Analyzers": "3.3.3",
+          "System.Collections.Immutable": "5.0.0",
+          "System.Memory": "4.5.4",
+          "System.Reflection.Metadata": "5.0.0",
+          "System.Runtime.CompilerServices.Unsafe": "5.0.0",
+          "System.Text.Encoding.CodePages": "5.0.0",
+          "System.Threading.Tasks.Extensions": "4.5.4"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.CodeAnalysis.dll": {
+            "assemblyVersion": "4.1.0.0",
+            "fileVersion": "4.100.22.11411"
+          }
+        },
+        "resources": {
+          "lib/netcoreapp3.1/cs/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/netcoreapp3.1/de/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "de"
+          },
+          "lib/netcoreapp3.1/es/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "es"
+          },
+          "lib/netcoreapp3.1/fr/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/netcoreapp3.1/it/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "it"
+          },
+          "lib/netcoreapp3.1/ja/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/netcoreapp3.1/ko/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/netcoreapp3.1/pl/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/netcoreapp3.1/pt-BR/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/netcoreapp3.1/ru/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/netcoreapp3.1/tr/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/netcoreapp3.1/zh-Hans/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/netcoreapp3.1/zh-Hant/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "zh-Hant"
+          }
+        }
+      },
+      "Microsoft.CodeAnalysis.CSharp/4.1.0": {
+        "dependencies": {
+          "Microsoft.CodeAnalysis.Common": "4.1.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.CodeAnalysis.CSharp.dll": {
+            "assemblyVersion": "4.1.0.0",
+            "fileVersion": "4.100.22.11411"
+          }
+        },
+        "resources": {
+          "lib/netcoreapp3.1/cs/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/netcoreapp3.1/de/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+            "locale": "de"
+          },
+          "lib/netcoreapp3.1/es/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+            "locale": "es"
+          },
+          "lib/netcoreapp3.1/fr/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/netcoreapp3.1/it/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+            "locale": "it"
+          },
+          "lib/netcoreapp3.1/ja/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/netcoreapp3.1/ko/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/netcoreapp3.1/pl/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/netcoreapp3.1/pt-BR/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/netcoreapp3.1/ru/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/netcoreapp3.1/tr/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/netcoreapp3.1/zh-Hans/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/netcoreapp3.1/zh-Hant/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+            "locale": "zh-Hant"
           }
         }
       },
@@ -60,7 +225,7 @@
           "System.DirectoryServices": "5.0.0",
           "System.DirectoryServices.AccountManagement": "5.0.0",
           "System.DirectoryServices.Protocols": "5.0.0",
-          "System.Drawing.Common": "5.0.0",
+          "System.Drawing.Common": "5.0.2",
           "System.IO.FileSystem.AccessControl": "5.0.0",
           "System.IO.Packaging": "5.0.0",
           "System.IO.Pipes.AccessControl": "5.0.0",
@@ -90,6 +255,14 @@
           "System.Threading.AccessControl": "5.0.0"
         }
       },
+      "Newtonsoft.Json/13.0.3": {
+        "runtime": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.3.27908"
+          }
+        }
+      },
       "NumSharp/0.30.0": {
         "dependencies": {
           "System.Memory": "4.5.4"
@@ -98,6 +271,150 @@
           "lib/netstandard2.0/NumSharp.dll": {
             "assemblyVersion": "0.30.0.0",
             "fileVersion": "0.30.0.0"
+          }
+        }
+      },
+      "OpenTK/4.8.2": {
+        "dependencies": {
+          "OpenTK.Audio.OpenAL": "4.8.2",
+          "OpenTK.Compute": "4.8.2",
+          "OpenTK.Core": "4.8.2",
+          "OpenTK.Graphics": "4.8.2",
+          "OpenTK.Input": "4.8.2",
+          "OpenTK.Mathematics": "4.8.2",
+          "OpenTK.Windowing.Common": "4.8.2",
+          "OpenTK.Windowing.Desktop": "4.8.2",
+          "OpenTK.Windowing.GraphicsLibraryFramework": "4.8.2"
+        }
+      },
+      "OpenTK.Audio.OpenAL/4.8.2": {
+        "dependencies": {
+          "OpenTK.Core": "4.8.2",
+          "OpenTK.Mathematics": "4.8.2"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/OpenTK.Audio.OpenAL.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "OpenTK.Compute/4.8.2": {
+        "runtime": {
+          "lib/netcoreapp3.1/OpenTK.Compute.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "OpenTK.Core/4.8.2": {
+        "runtime": {
+          "lib/netstandard2.1/OpenTK.Core.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "OpenTK.Graphics/4.8.2": {
+        "dependencies": {
+          "OpenTK.Core": "4.8.2",
+          "OpenTK.Mathematics": "4.8.2"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/OpenTK.Graphics.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "OpenTK.Input/4.8.2": {
+        "runtime": {
+          "lib/netstandard2.0/OpenTK.Input.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "OpenTK.Mathematics/4.8.2": {
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "5.0.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/OpenTK.Mathematics.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "OpenTK.redist.glfw/3.3.8.39": {
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/libglfw-wayland.so.3.3": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-x64/native/libglfw.so.3.3": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx-arm64/native/libglfw.3.dylib": {
+            "rid": "osx-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx-x64/native/libglfw.3.dylib": {
+            "rid": "osx-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/glfw3.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x86/native/glfw3.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "OpenTK.Windowing.Common/4.8.2": {
+        "dependencies": {
+          "OpenTK.Core": "4.8.2",
+          "OpenTK.Mathematics": "4.8.2"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/OpenTK.Windowing.Common.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "OpenTK.Windowing.Desktop/4.8.2": {
+        "dependencies": {
+          "OpenTK.Core": "4.8.2",
+          "OpenTK.Mathematics": "4.8.2",
+          "OpenTK.Windowing.Common": "4.8.2",
+          "OpenTK.Windowing.GraphicsLibraryFramework": "4.8.2"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/OpenTK.Windowing.Desktop.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "OpenTK.Windowing.GraphicsLibraryFramework/4.8.2": {
+        "dependencies": {
+          "OpenTK.Core": "4.8.2",
+          "OpenTK.redist.glfw": "3.3.8.39"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/OpenTK.Windowing.GraphicsLibraryFramework.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
           }
         }
       },
@@ -180,6 +497,7 @@
         }
       },
       "System.CodeDom/5.0.0": {},
+      "System.Collections.Immutable/5.0.0": {},
       "System.ComponentModel.Composition/5.0.0": {
         "runtime": {
           "lib/netcoreapp2.0/System.ComponentModel.Composition.dll": {
@@ -374,7 +692,7 @@
           }
         }
       },
-      "System.Drawing.Common/5.0.0": {
+      "System.Drawing.Common/5.0.2": {
         "dependencies": {
           "Microsoft.Win32.SystemEvents": "5.0.0"
         }
@@ -474,6 +792,7 @@
       "System.Reflection.Emit/4.7.0": {},
       "System.Reflection.Emit.ILGeneration/4.7.0": {},
       "System.Reflection.Emit.Lightweight/4.7.0": {},
+      "System.Reflection.Metadata/5.0.0": {},
       "System.Runtime.Caching/5.0.0": {
         "dependencies": {
           "System.Configuration.ConfigurationManager": "5.0.0"
@@ -493,6 +812,7 @@
           }
         }
       },
+      "System.Runtime.CompilerServices.Unsafe/5.0.0": {},
       "System.Security.AccessControl/5.0.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "5.0.1",
@@ -645,9 +965,10 @@
           "System.Security.Principal.Windows": "5.0.0"
         }
       },
+      "System.Threading.Tasks.Extensions/4.5.4": {},
       "System.Windows.Extensions/5.0.0": {
         "dependencies": {
-          "System.Drawing.Common": "5.0.0"
+          "System.Drawing.Common": "5.0.2"
         }
       }
     }
@@ -658,12 +979,68 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Accord/3.8.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7kJrB570dO5ELim+2KWQNozuvWO9/BuZfZspdFy36fcWPNF2CEccblLuILeUlI8QJYd2DlBy0bfK8BlCx/uayA==",
+      "path": "accord/3.8.0",
+      "hashPath": "accord.3.8.0.nupkg.sha512"
+    },
+    "ILNumerics.Core/6.0.148": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OUVGlnRwRoBoUaGv39EFjq9zi7Ldc3gaumFxH/SgIn0QNJB1wME9s1YvxLdyiVnoxMx54Mv+GR0L4MF+fRT2gQ==",
+      "path": "ilnumerics.core/6.0.148",
+      "hashPath": "ilnumerics.core.6.0.148.nupkg.sha512"
+    },
+    "ILNumerics.Core.Platforms/6.0.148": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0llJWb4hxNMLcWjOCCkQvpRvY1NREEQPZGv9mRodMYtpuuOvabIXHnCp3mhZFpIxEybOLJF58WN7KNM78uCReg==",
+      "path": "ilnumerics.core.platforms/6.0.148",
+      "hashPath": "ilnumerics.core.platforms.6.0.148.nupkg.sha512"
+    },
+    "ILNumerics.Core.Runtime/6.0.148": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8EGpCXZMR44/PrJpQuDnKYzJbxZrhGFN2Weq++XfDoCbl/8RF2QA6XVBufNI2IbLnEgBXPmNUKbXuas6eADAHg==",
+      "path": "ilnumerics.core.runtime/6.0.148",
+      "hashPath": "ilnumerics.core.runtime.6.0.148.nupkg.sha512"
+    },
+    "ILNumerics.Tools.CodeTransforms/6.0.148": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-L4nWtjLdn0J8L87uzvhg8YgKfg3adQtEMDYrg+30/IxADqQKRJ29DzAyfCCTwzIv7wCGSoHCjeCsTJvfw0hiwQ==",
+      "path": "ilnumerics.tools.codetransforms/6.0.148",
+      "hashPath": "ilnumerics.tools.codetransforms.6.0.148.nupkg.sha512"
+    },
     "MathNet.Numerics/5.0.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-pg1W2VwaEQMAiTpGK840hZgzavnqjlCMTVSbtVCXVyT+7AX4mc1o89SPv4TBlAjhgCOo9c1Y+jZ5m3ti2YgGgA==",
       "path": "mathnet.numerics/5.0.0",
       "hashPath": "mathnet.numerics.5.0.0.nupkg.sha512"
+    },
+    "Microsoft.CodeAnalysis.Analyzers/3.3.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-j/rOZtLMVJjrfLRlAMckJLPW/1rze9MT1yfWqSIbUPGRu1m1P0fuo9PmqapwsmePfGB5PJrudQLvmUOAMF0DqQ==",
+      "path": "microsoft.codeanalysis.analyzers/3.3.3",
+      "hashPath": "microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512"
+    },
+    "Microsoft.CodeAnalysis.Common/4.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bNzTyxP3iD5FPFHfVDl15Y6/wSoI7e3MeV0lOaj9igbIKTjgrmuw6LoVJ06jUNFA7+KaDC/OIsStWl/FQJz6sQ==",
+      "path": "microsoft.codeanalysis.common/4.1.0",
+      "hashPath": "microsoft.codeanalysis.common.4.1.0.nupkg.sha512"
+    },
+    "Microsoft.CodeAnalysis.CSharp/4.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-sbu6kDGzo9bfQxuqWpeEE7I9P30bSuZEnpDz9/qz20OU6pm79Z63+/BsAzO2e/R/Q97kBrpj647wokZnEVr97w==",
+      "path": "microsoft.codeanalysis.csharp/4.1.0",
+      "hashPath": "microsoft.codeanalysis.csharp.4.1.0.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/5.0.1": {
       "type": "package",
@@ -700,12 +1077,96 @@
       "path": "microsoft.windows.compatibility/5.0.2",
       "hashPath": "microsoft.windows.compatibility.5.0.2.nupkg.sha512"
     },
+    "Newtonsoft.Json/13.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
+      "path": "newtonsoft.json/13.0.3",
+      "hashPath": "newtonsoft.json.13.0.3.nupkg.sha512"
+    },
     "NumSharp/0.30.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-1f8m2B/m/ZSsICaqLszspCyA9/sTHK7wBKEH5KsxGg/r3QCYTc2HnfYOGMeCytvo8/j0v/umn5umLOLhdExlFA==",
       "path": "numsharp/0.30.0",
       "hashPath": "numsharp.0.30.0.nupkg.sha512"
+    },
+    "OpenTK/4.8.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-s2bqkD0glaX5Zbrv0Nj91zcefGrwq+nAp7SnXw14Z22Wj1nVE9CWkEyKX8tha1EdxqSRwKdP6gi+xzZXs4nK4Q==",
+      "path": "opentk/4.8.2",
+      "hashPath": "opentk.4.8.2.nupkg.sha512"
+    },
+    "OpenTK.Audio.OpenAL/4.8.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/Xe0luzJiVOvJ8YXGMY/YLZsGsb0/7Ms09isb/WxkKWjLyuiB2OIflZ49VHmumZpQDz2PUgwqOt2fucviLOmuw==",
+      "path": "opentk.audio.openal/4.8.2",
+      "hashPath": "opentk.audio.openal.4.8.2.nupkg.sha512"
+    },
+    "OpenTK.Compute/4.8.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-n3gBbXOTCkvkNjSOKkVpoxfF/QXzo+cPWKtzObm4f/J+5mOE8odHKXgPn1765Tnu2Ou2ImvdXi/bUFQt/V5Qiw==",
+      "path": "opentk.compute/4.8.2",
+      "hashPath": "opentk.compute.4.8.2.nupkg.sha512"
+    },
+    "OpenTK.Core/4.8.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BS5IM1W/BK9BtmsEnYT/RGv+KDK0Zrnw8nDDGvK45ywBjMLv+qBRB+Vkx5sQ4Jjy7btLxxqrPHmT3wt5N/PcxA==",
+      "path": "opentk.core/4.8.2",
+      "hashPath": "opentk.core.4.8.2.nupkg.sha512"
+    },
+    "OpenTK.Graphics/4.8.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qpbyWqdO+yEFVFinKwEWKgi1Jgd0fVSgHbB7d5I8ozI9RL/SKZSNmJDxLjTMSQImJtFixmATcLEWwvEceJ/JsQ==",
+      "path": "opentk.graphics/4.8.2",
+      "hashPath": "opentk.graphics.4.8.2.nupkg.sha512"
+    },
+    "OpenTK.Input/4.8.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BGs7STF0/o4kNJ1pWXko4I3IwEhieOHVgJFzXzo5m1tI4zMKjBqmzuc4GGfCu+Gtiv33vRYx3dt9f659nr5J8w==",
+      "path": "opentk.input/4.8.2",
+      "hashPath": "opentk.input.4.8.2.nupkg.sha512"
+    },
+    "OpenTK.Mathematics/4.8.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-A8D3eBWi/LKndvTQQ9o9uwyQJUjGORfWCn/gOvX0jIwmTctkLGnOdw5kw4JbRnzfrhZoSIaqZ7MYWWhIkasORw==",
+      "path": "opentk.mathematics/4.8.2",
+      "hashPath": "opentk.mathematics.4.8.2.nupkg.sha512"
+    },
+    "OpenTK.redist.glfw/3.3.8.39": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JzjaBzHTyKenUk9CXOYIqA/v7VMnjFnqmd3SKR3I1YpuOTu/H3ohyy3o+ZfMCQ6IRKs7CLfSPXMarKLvwD0WgQ==",
+      "path": "opentk.redist.glfw/3.3.8.39",
+      "hashPath": "opentk.redist.glfw.3.3.8.39.nupkg.sha512"
+    },
+    "OpenTK.Windowing.Common/4.8.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cE7w2AboX/cxtOl7UWa1rTnH4uUoCEg9rtppN6d1/8GOfKUW8LjO6bjEePrRk9LzRZL+5dky3nfw6ZONn5ItyA==",
+      "path": "opentk.windowing.common/4.8.2",
+      "hashPath": "opentk.windowing.common.4.8.2.nupkg.sha512"
+    },
+    "OpenTK.Windowing.Desktop/4.8.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-SlEuiAllLgE03/jJbloCOD1iNtBpnhMuVb510ccA/ILp//mzXHeRKsz7zFJ1ct7yIxe5U2WExXx52Tan++p11Q==",
+      "path": "opentk.windowing.desktop/4.8.2",
+      "hashPath": "opentk.windowing.desktop.4.8.2.nupkg.sha512"
+    },
+    "OpenTK.Windowing.GraphicsLibraryFramework/4.8.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-o50PgKL8G0Pqs7Lo7hu1ru+5X5l03aht5jaeik7McXFgVaBJzMLhMhZkiferx4bbcC9Rq597BOknDwqE/bsLOw==",
+      "path": "opentk.windowing.graphicslibraryframework/4.8.2",
+      "hashPath": "opentk.windowing.graphicslibraryframework.4.8.2.nupkg.sha512"
     },
     "runtime.linux-arm.runtime.native.System.IO.Ports/5.0.0-rtm.20519.4": {
       "type": "package",
@@ -776,6 +1237,13 @@
       "sha512": "sha512-JPJArwA1kdj8qDAkY2XGjSWoYnqiM7q/3yRNkt6n28Mnn95MuEGkZXUbPBf7qc3IjwrGY5ttQon7yqHZyQJmOQ==",
       "path": "system.codedom/5.0.0",
       "hashPath": "system.codedom.5.0.0.nupkg.sha512"
+    },
+    "System.Collections.Immutable/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FXkLXiK0sVVewcso0imKQoOxjoPAj42R8HtjjbSjVPAzwDfzoyoznWxgA3c38LDbN9SJux1xXoXYAhz98j7r2g==",
+      "path": "system.collections.immutable/5.0.0",
+      "hashPath": "system.collections.immutable.5.0.0.nupkg.sha512"
     },
     "System.ComponentModel.Composition/5.0.0": {
       "type": "package",
@@ -861,12 +1329,12 @@
       "path": "system.directoryservices.protocols/5.0.0",
       "hashPath": "system.directoryservices.protocols.5.0.0.nupkg.sha512"
     },
-    "System.Drawing.Common/5.0.0": {
+    "System.Drawing.Common/5.0.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-SztFwAnpfKC8+sEKXAFxCBWhKQaEd97EiOL7oZJZP56zbqnLpmxACWA8aGseaUExciuEAUuR9dY8f7HkTRAdnw==",
-      "path": "system.drawing.common/5.0.0",
-      "hashPath": "system.drawing.common.5.0.0.nupkg.sha512"
+      "sha512": "sha512-rvr/M1WPf24ljpvvrVd74+NdjRUJu1bBkspkZcnzSZnmAUQWSvanlQ0k/hVHk+cHufZbZfu7vOh/vYc0q5Uu/A==",
+      "path": "system.drawing.common/5.0.2",
+      "hashPath": "system.drawing.common.5.0.2.nupkg.sha512"
     },
     "System.Formats.Asn1/5.0.0": {
       "type": "package",
@@ -966,12 +1434,26 @@
       "path": "system.reflection.emit.lightweight/4.7.0",
       "hashPath": "system.reflection.emit.lightweight.4.7.0.nupkg.sha512"
     },
+    "System.Reflection.Metadata/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5NecZgXktdGg34rh1OenY1rFNDCI8xSjFr+Z4OU4cU06AQHUdRnIIEeWENu3Wl4YowbzkymAIMvi3WyK9U53pQ==",
+      "path": "system.reflection.metadata/5.0.0",
+      "hashPath": "system.reflection.metadata.5.0.0.nupkg.sha512"
+    },
     "System.Runtime.Caching/5.0.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-30D6MkO8WF9jVGWZIP0hmCN8l9BTY4LCsAzLIe4xFSXzs+AjDotR7DpSmj27pFskDURzUvqYYY0ikModgBTxWw==",
       "path": "system.runtime.caching/5.0.0",
       "hashPath": "system.runtime.caching.5.0.0.nupkg.sha512"
+    },
+    "System.Runtime.CompilerServices.Unsafe/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ZD9TMpsmYJLrxbbmdvhwt9YEgG5WntEnZ/d1eH8JBX9LBp+Ju8BSBhUGbZMNVHHomWo2KVImJhTDl2hIgw/6MA==",
+      "path": "system.runtime.compilerservices.unsafe/5.0.0",
+      "hashPath": "system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
     },
     "System.Security.AccessControl/5.0.0": {
       "type": "package",
@@ -1091,6 +1573,13 @@
       "sha512": "sha512-WJ9w9m4iHJVq0VoH7hZvYAccbRq95itYRhAAXd6M4kVCzLmT6NqTwmSXKwp3oQilWHhYTXgqaIXxBfg8YaqtmA==",
       "path": "system.threading.accesscontrol/5.0.0",
       "hashPath": "system.threading.accesscontrol.5.0.0.nupkg.sha512"
+    },
+    "System.Threading.Tasks.Extensions/4.5.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zteT+G8xuGu6mS+mzDzYXbzS7rd3K6Fjb9RiZlYlJPam2/hU7JCBZBVEcywNuR+oZ1ncTvc/cq0faRr3P01OVg==",
+      "path": "system.threading.tasks.extensions/4.5.4",
+      "hashPath": "system.threading.tasks.extensions.4.5.4.nupkg.sha512"
     },
     "System.Windows.Extensions/5.0.0": {
       "type": "package",

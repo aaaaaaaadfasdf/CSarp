@@ -1,4 +1,4 @@
 {
-    "terminal.integrated.locale": "en",
-    "cmake.configureOnOpen": false,
+  "terminal.integrated.locale": "en",
+  "cmake.configureOnOpen": false
 }

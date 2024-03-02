@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 
-public partial struct Creatur
+public partial class Creatur
 {
     public  List<Func<float>> input = [];
 
@@ -26,13 +26,13 @@ public partial struct Creatur
     public float ImpDirectionN()
     {
         int c = 0;
-        int y = 0;
+        
         while (true)
         {
             c += 1;
             if (x + c >= Grid.x)
             {
-                return c;
+                return (float)1/c;
             }
             if (!(Grid.Map[x + c, y] == 0))
             {
@@ -50,7 +50,7 @@ public partial struct Creatur
             c += 1;
             if (y + c >= Grid.y)
             {
-                return 1 / c;
+                return (float)1 / c;
             }
             if (!(Grid.Map[x, y + c] == 0))
             {
@@ -68,7 +68,7 @@ public partial struct Creatur
             c += 1;
             if (x - c < 0)
             {
-                return 1 / c;
+                return (float)1 / c;
             }
             if (!(Grid.Map[x - c, y] == 0))
             {

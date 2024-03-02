@@ -2,5 +2,7 @@
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)system.speech\5.0.0\build\netcoreapp2.0\System.Speech.targets" Condition="Exists('$(NuGetPackageRoot)system.speech\5.0.0\build\netcoreapp2.0\System.Speech.targets')" />
+    <Import Project="$(NuGetPackageRoot)ilnumerics.tools.codetransforms\6.0.148\buildTransitive\netstandard2.0\ILNumerics.Tools.CodeTransforms.targets" Condition="Exists('$(NuGetPackageRoot)ilnumerics.tools.codetransforms\6.0.148\buildTransitive\netstandard2.0\ILNumerics.Tools.CodeTransforms.targets')" />
+    <Import Project="$(NuGetPackageRoot)accord\3.8.0\build\Accord.targets" Condition="Exists('$(NuGetPackageRoot)accord\3.8.0\build\Accord.targets')" />
   </ImportGroup>
 </Project>
