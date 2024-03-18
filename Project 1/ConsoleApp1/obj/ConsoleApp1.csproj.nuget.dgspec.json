@@ -50,6 +50,10 @@
               "target": "Package",
               "version": "[5.0.0, )"
             },
+            "Microsoft.CodeAnalysis.CSharp.Scripting": {
+              "target": "Package",
+              "version": "[4.9.2, )"
+            },
             "Microsoft.Windows.Compatibility": {
               "target": "Package",
               "version": "[5.0.2, )"

@@ -9,10 +9,11 @@ using System.Reflection;
     public static string MatrixToString(Matrix<float> matrix)
     {
         string str = "";
+
         for (int i = 0; i < matrix.RowCount; i++)
         {
 
-            for (int j = 0; j < matrix.RowCount; j++)
+            for (int j = 0; j < matrix.ColumnCount; j++)
             {
 
                 str += matrix[i, j].ToString() + " ";
@@ -25,72 +26,56 @@ using System.Reflection;
         return str;
 
     }
-    static bool TryParseFunctionCall(string input, out string functionName, out object[] arguments)
-    {
-        functionName = null;
-        arguments = null;
+    
+public static List<Creature> PullPositions(int gen, int step,List<Creature> upData){
+
+        
+        
+        string filePath = Path.Combine(folderDirectory,"Gen"+gen,"Step"+step+".txt");
+
 
         try
         {
-            // Remove any whitespace and split the input into function name and arguments
-            input = input.Replace(" ", "");
-            int openParenIndex = input.IndexOf('(');
-            int closeParenIndex = input.LastIndexOf(')');
+             
+           
+            
 
-            functionName = input.Substring(0, openParenIndex);
-            string argumentsStr = input.Substring(openParenIndex + 1, closeParenIndex - openParenIndex - 1);
-            string[] args = argumentsStr.Split(',');
+            
+          
+                 // Read all lines from the file into an array
+                string[] lines = File.ReadAllLines(filePath);
 
-            arguments = new object[args.Length];
-            for (int i = 0; i < args.Length; i++)
-            {
-                arguments[i] = int.Parse(args[i]); // Assuming all arguments are integers for simplicity
-            }
+            
+                for(int i =0,j=0;j<lines.Length;){
+                
+                    // get the position
+                     upData[i].x= int.Parse(lines[j].Split(' ')[0]);
+                     upData[i].y= int.Parse(lines[j+1].Split(' ')[0]);
+                     
+                     i+=1;
+                     j+=2;
 
-            return true;
-        }
-        catch
-        {
-            return false;
-        }
-    }
-    static void InvokeFunction(string functionName, object[] arguments)
-    {
-        try
-        {
-            // Get the method info of the function
-            MethodInfo methodInfo = typeof(Control).GetMethod(functionName, BindingFlags.Static | BindingFlags.NonPublic);
-
-            // Invoke the method with the provided arguments
-            if (methodInfo != null)
-            {
-                methodInfo.Invoke(null, arguments);
-            }
-            else
-            {
-                Console.WriteLine($"Function '{functionName}' not found.");
-            }
+                }
+             
+            
+        return upData;
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error executing function '{functionName}': {ex.Message}");
+            Console.WriteLine($"An error occurred: {ex.Message}");
+            return data;
         }
-    }
+    
 
-    // Example function to be invoked dynamically
-
-    static void myfunction(int a, int b)
-    {
-        Console.WriteLine($"myfunction({a}, {b}) called. Sum: {a + b}");
-    }
-
-    public static List<Creatur> GetDataFromFile(int gen, int step){
+        
+}
+public static List<Creature> PullData(int gen){ 
 
         
 
-        List<Creatur> dataFromFile= [];
+        List<Creature> dataFromFile= [];
 
-        string filePath = folderDirectory+"Gen"+gen+"//Step"+step+".txt";
+        string filePath = Path.Combine(folderDirectory,"Gen"+gen,"data.txt");
       
 
         try
@@ -106,27 +91,26 @@ using System.Reflection;
 
             
                 for(int i =0;i<lines.Length;){
-                Creatur cre = new();
+                Creature cre = new();
                     // get the position
-                     cre.x= int.Parse(lines[i].Split(' ')[0]);
-                     cre.y= int.Parse(lines[i+1].Split(' ')[0]);
+                     
                      
                      // get the ImputNetwork
                      List<float> arr;
-                     string[] str = lines[i+2].Split(' ');
+                     string[] str = lines[i].Split(' ');
                     for(int j=0;j<cre.inputNetwork.RowCount;j++){
                           for(int k=0;k<cre.inputNetwork.ColumnCount;k++){
-                        cre.inputNetwork[j,k]= float.Parse(str[j+k]);
+                        cre.inputNetwork[j,k]= float.Parse(str[j*cre.inputNetwork.ColumnCount+k]);
                         }
                     }
                     
                     // get the network
                     for(int j=0;j<cre.network.Count;j++){
                         
-                      str = lines[i+j+3].Split(' ');
+                      str = lines[i+j+1].Split(' ');
                          for(int k=0;k<cre.network[j].RowCount;k++){
                           for(int l=0;l<cre.network[j].ColumnCount;l++){
-                        cre.network[j][k,l]= float.Parse(str[k+l]);
+                        cre.network[j][k,l]= float.Parse(str[k*cre.inputNetwork.ColumnCount+l]);
                     }
                     }
                     }
@@ -135,15 +119,15 @@ using System.Reflection;
                     // get the output
 
                    
-                      str = lines[i+3+cre.network.Count].Split(' ');
+                      str = lines[i+1+cre.network.Count].Split(' ');
                     for(int j=0;j<cre.outputNetwork.RowCount;j++){
                           for(int k=0;k<cre.outputNetwork.ColumnCount;k++){
-                        cre.outputNetwork[j,k]= float.Parse(str[j+k]);
+                        cre.outputNetwork[j,k]= float.Parse(str[j*cre.inputNetwork.ColumnCount+k]);
                     }
                     }
 
                     // this is done to move to the next location where the next creatur is stored
-                    i+=3+cre.network.Count+1;
+                    i+=1+cre.network.Count+1;
 
 
                     dataFromFile.Add(cre);
@@ -164,15 +148,16 @@ using System.Reflection;
 
         
     }
-
-        public static void SaveThisRun()
+    public static void MakeRunFolder()
     {
 
 
 
-        // Specify the path of the folder you want to create
-
-        folderDirectory = mainDirectory + $"\\{currentTime:yyyyMMdd_HHmmss}\\";
+        // Specify the path of the folder you want to create when no Folder is given.
+        if(folderDirectory == null){
+        folderDirectory =Path.Combine(mainDirectory + $"\\{currentTime:yyyyMMdd_HHmmss}");
+        }
+        
         string folderPath = folderDirectory;
 
         try
@@ -187,10 +172,10 @@ using System.Reflection;
             Console.WriteLine($"Error: {ex.Message}");
         }
     }
-    public static void SaveGen()
+    public static void MakeGenFolder()
     {
 
-        string folderPath = folderDirectory + $"Gen{generationCount}\\";
+        string folderPath =Path.Combine(folderDirectory , $"Gen{generationCount}");
 
         try
         {
@@ -204,18 +189,13 @@ using System.Reflection;
             Console.WriteLine($"Error: {ex.Message}");
         }
     }
-    public static void SaveStep()
-    {
-
-        string fileName = $"Step{stepCount}.txt";
+    public static void PushGenData(){
+         string fileName = $"data.txt";
 
         // Set the path where you want to save the file
-        string path = Path.Combine(folderDirectory + $"Gen{generationCount}", fileName);
+        string path = Path.Combine(folderDirectory , $"Gen{generationCount}", fileName);
 
         // Write some content to the file
-
-
-
 
         try
         {
@@ -225,9 +205,6 @@ using System.Reflection;
                 for (int i = 0; i < data.Count; i++)
                 {
 
-
-                    writer.WriteLine(data[i].x.ToString());
-                    writer.WriteLine(data[i].y.ToString());
 
                     writer.WriteLine(MatrixToString(data[i].inputNetwork));
 
@@ -254,12 +231,52 @@ using System.Reflection;
         {
             Console.WriteLine($"Error: {ex.Message}");
         }
+    }
+    public static void SaveStep()
+    {
+
+        string fileName = $"Step{stepCount}.txt";
+
+        // Set the path where you want to save the file
+        string path = Path.Combine(folderDirectory , $"Gen{generationCount}", fileName);
+
+        // Write some content to the file
+
+
+
+
+        try
+        {
+
+            using (StreamWriter writer = new StreamWriter(path))
+            {
+                for (int i = 0; i < data.Count; i++)
+                {
+
+
+                    writer.WriteLine(data[i].x.ToString());
+                    writer.WriteLine(data[i].y.ToString());
+
+                    
+
+
+
+
+                }
+
+            }
+
+
+
+        }
+
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
 
     }
-
-
-
-static void AnimatGen(int AniGen){
+static void Animate(int AniGen){
             System.Windows.Forms.Application.EnableVisualStyles();     
             System.Windows.Forms.Application.Run(new AnimatGen(AniGen));
       

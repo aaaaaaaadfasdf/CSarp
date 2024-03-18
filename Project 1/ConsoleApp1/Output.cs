@@ -3,23 +3,40 @@ using System.Data;
 using System.Security.Cryptography.X509Certificates;
 using NumSharp;
 
-public partial class Creatur
+public partial class Creature
 {
-    public  List<Action> output = [];
+    public delegate void IntAction(int value);
+    
+    public  List<IntAction> output = [];
 
     public void OutputCons()
     {
-        output = new List<Action>
+        output = new List<IntAction>
         {
             DirectionN,
             DirectionO,
             DirectionS,
             DirectionW
         };
+        // has to be at the end of the list!!!!
+        for(int i=0;i<remember.Count;i++){
+            //output.Add(RememberOut);
+        }
+        
     }
 
+    public void RememberOut(int index){
 
-        public  void DirectionN()
+        // so that it resets after each round
+        if(rememberCounter >= remember.Count){
+            rememberCounter =0;
+        }
+
+        remember[rememberCounter]= actVec[index];
+        
+    }
+
+    public  void DirectionN(int index)
         {
             int xx = 1;
             int yy = 0;
@@ -34,7 +51,7 @@ public partial class Creatur
           
         }
 
-        public  void DirectionO()
+        public  void DirectionO(int index)
         {
             int xx = 0;
             int yy = 1;
@@ -49,7 +66,7 @@ public partial class Creatur
           
         }
 
-        public void  DirectionS()
+        public void  DirectionS(int index)
         {
             int xx = -1;
             int yy = 0;
@@ -64,7 +81,7 @@ public partial class Creatur
            
         }
 
-        public  void DirectionW()
+        public  void DirectionW(int index)
         {
             int xx = 0;
             int yy = -1;
@@ -78,5 +95,12 @@ public partial class Creatur
             }
           
         }
+    
+    
+ 
+    
+    
+    
+    
     }
 

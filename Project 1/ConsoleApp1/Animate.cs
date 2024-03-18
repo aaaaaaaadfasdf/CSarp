@@ -1,3 +1,6 @@
+using System.Drawing.Drawing2D;
+
+
 static class Grid
 {
 
@@ -29,15 +32,12 @@ static class Grid
 
         // Set up where the lines are
 
-        for (int i = 0; i < x - 0; i++)
+        for (int i = 10; i < x - 10; i++)
         {
-            for (int j = 0; j < y - 0; j++)
+            for (int j = 10; j < y - 10; j++)
             {
 
-                if (j == x / 2|| i ==y/2)
-                {
-                    Map[i, j] = block;
-                }
+
 
 
 
@@ -45,6 +45,47 @@ static class Grid
         }
 
 
+
+        for (int i = 0; i < x - 0; i += 20)
+        {
+            for (int j = 0; j < y - 0; j++)
+            {
+
+                
+                            if(j%30<27){
+                            Map[i,j] = block;
+                             }
+
+                            if((x-j)%30<27){
+                            Map[i+10,j] = block;
+                             }
+
+                
+            }
+
+
+        }
+
+
+        for (int i = 0; i < x - 0; i++)
+        {
+            for (int j = 0; j < y - 0; j += 10)
+            {
+
+                
+                            if(i%10<6){
+                            Map[i,j] = block;
+                             }
+
+                            if((x-i)%10<2){
+                            Map[i,j+2] = block;
+                             }
+                
+
+            }
+
+
+        }
 
     }
 
@@ -87,7 +128,7 @@ class MainProgram : Form
 
         // Create a timer to update the animation
         System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-        timer.Interval = 1; // Update every 16 milliseconds (approximately 60 frames per second)
+        timer.Interval = 16; // Update every 16 milliseconds (approximately 60 frames per second)
         timer.Tick += Timer_Tick;
         time += timer.Interval / 1;
         timer.Start();
@@ -123,7 +164,7 @@ class MainProgram : Form
         for (int i = 0; i < Control.pop; i++)
         {
 
-            Creatur inc = Control.data[i];
+            Creature inc = Control.data[i];
 
             Color myColor = Color.FromArgb((int)((inc.inputNetwork.FrobeniusNorm() * 25) % 255),
             (int)((inc.network[0].FrobeniusNorm() * 25) % 255),
@@ -186,11 +227,11 @@ class AnimatGen : Form
     int frames = 0;
     public static float time = 0;
 
-    int aniGen ;
-
+    int aniGen;
+    List<Creature> aniData;
     public AnimatGen(int aniGen)
     {
-            
+
         this.aniGen = aniGen;
 
 
@@ -202,15 +243,15 @@ class AnimatGen : Form
         Size = new Size(Window.x + 16, Window.y + 38);
         Text = "C# Animation Example";
         Grid.space = (float)this.ClientSize.Width / ((float)Grid.x);
-
+        aniData = Control.PullData(aniGen);
         // Create a timer to update the animation
         System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-        timer.Interval = 100; // Update every 16 milliseconds (approximately 60 frames per second)
+        timer.Interval = 16; // Update every 16 milliseconds (approximately 60 frames per second)
         timer.Tick += Timer_Tick;
         time += timer.Interval / 1;
         timer.Start();
 
-        
+
 
 
 
@@ -218,43 +259,44 @@ class AnimatGen : Form
 
     private void Timer_Tick(object? sender, EventArgs e)
     {
-        // i invalidata this here because otherwise it makes 2 steps to mutch
-        if (!(frames > Control.generationLength))
+
+        if (frames < Control.generationLength)
         {
-            Console.WriteLine(frames);
+            // invalidate increases the score for frames 
             Invalidate();
-        }else{
 
-        
-        Close();
-        
-        
-        
-        
+
         }
-frames += 1;
+        else
+        {
 
 
-        
+            Close();
+
+
+
+
+        }
+
+
+
+
     }
 
     protected override void OnPaint(PaintEventArgs e)
     {
 
-        List<Creatur> aniData = Control.GetDataFromFile(aniGen,frames);
+        aniData = Control.PullPositions(aniGen, frames, aniData);
 
 
 
 
-
-
-        // Draw the animated element (a rectangle in this case)
 
 
         for (int i = 0; i < Control.pop; i++)
         {
 
-            Creatur inc = aniData[i];
+            Creature inc =aniData[i];
 
             Color myColor = Color.FromArgb((int)((inc.inputNetwork.FrobeniusNorm() * 25) % 255),
             (int)((inc.network[0].FrobeniusNorm() * 25) % 255),
@@ -272,6 +314,7 @@ frames += 1;
 
 
         }
+
 
         for (int i = 0; i < Grid.x; i++)
         {
@@ -292,8 +335,10 @@ frames += 1;
             }
         }
 
+        frames += 1;
 
     }
+
 
 
 
