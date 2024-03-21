@@ -15,8 +15,8 @@ public partial class Creature
 
     // Muatation variables
     // the Mutation is alway countet in how many mutation per nural network 
-    // all the Change variable declare how big the change is 
-    public const float mutationChance = .1f;
+    // all the Change variable declare how big the change is in + and - 
+    public const float mutationChance = 1f;
     public const float mutationChange = .01f;
     public const float mutationRandom = .001f;
 
@@ -39,7 +39,6 @@ public const float totoalLinks =0.5f; // how many percent of the connenction are
     public Matrix<float> outputNetwork;
 
     public Vector<float> actVec;
-
     public Vector<float> valVec;
 
 
@@ -48,15 +47,12 @@ public const float totoalLinks =0.5f; // how many percent of the connenction are
 
     public const int bias = 1;
 
-    public const int inputNeuron = 0;
-
-    public const int outputNeuron = 2;
 
     public const int neuronsPerLayer = 4;
-    public const int hiddenLayers =  4          ;// this is alway plus one
+    public const int hiddenLayers =  4; // this is alway plus one because it is really the links
 
-// all values from the Network
-public int toalNetValCount ;
+
+    public int toalNetValCount; // how many Values are there in all parts of the network
 
     public List<float> remember = Enumerable.Repeat(0f, 6).ToList();
     public int rememberCounter = 0;
@@ -76,8 +72,8 @@ public int toalNetValCount ;
 
 
 
-        InputCons();
-        OutputCons();
+        InputCons();    //the constructor 
+        OutputCons();   //the constructor
 
 
         MakeBrain();
@@ -206,7 +202,7 @@ public int toalNetValCount ;
         actVec[actVec.Count - 1] = 1;
 
 
-        // AkFun also builds the new actVec
+        // AkFun also builds the new actVec because the bias is lost
         valVec = inputNetwork.Multiply(actVec);
         AkFun();
 

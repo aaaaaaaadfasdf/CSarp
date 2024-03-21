@@ -20,7 +20,7 @@ public partial class Creature
         };
         // has to be at the end of the list!!!!
         for(int i=0;i<remember.Count;i++){
-            //output.Add(RememberOut);
+           // output.Add(RememberOut);
         }
         
     }

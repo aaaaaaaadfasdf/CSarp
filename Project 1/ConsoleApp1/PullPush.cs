@@ -78,15 +78,8 @@ public static List<Creature> PullData(int gen){
         string filePath = Path.Combine(folderDirectory,"Gen"+gen,"data.txt");
       
 
-        try
-        {
-             
-           
-            
 
-            
-          
-                 // Read all lines from the file into an array
+                       // Read all lines from the file into an array
                 string[] lines = File.ReadAllLines(filePath);
 
             
@@ -110,7 +103,7 @@ public static List<Creature> PullData(int gen){
                       str = lines[i+j+1].Split(' ');
                          for(int k=0;k<cre.network[j].RowCount;k++){
                           for(int l=0;l<cre.network[j].ColumnCount;l++){
-                        cre.network[j][k,l]= float.Parse(str[k*cre.inputNetwork.ColumnCount+l]);
+                        cre.network[j][k,l]= float.Parse(str[k*cre.network[j].ColumnCount+l]);
                     }
                     }
                     }
@@ -122,7 +115,7 @@ public static List<Creature> PullData(int gen){
                       str = lines[i+1+cre.network.Count].Split(' ');
                     for(int j=0;j<cre.outputNetwork.RowCount;j++){
                           for(int k=0;k<cre.outputNetwork.ColumnCount;k++){
-                        cre.outputNetwork[j,k]= float.Parse(str[j*cre.inputNetwork.ColumnCount+k]);
+                        cre.outputNetwork[j,k]= float.Parse(str[j*cre.outputNetwork.ColumnCount+k]);
                     }
                     }
 
@@ -137,11 +130,21 @@ public static List<Creature> PullData(int gen){
                 }
              
             
+
+            
+          
         return dataFromFile;
+
+        try
+        {
+             
+           
+            
+
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"An error occurred: {ex.Message}");
+            Console.WriteLine($"An error occurred: in get data try");
             return data;
         }
     
@@ -154,9 +157,10 @@ public static List<Creature> PullData(int gen){
 
 
         // Specify the path of the folder you want to create when no Folder is given.
-        if(folderDirectory == null){
+        if(!Directory.Exists(folderDirectory)){
+            
         folderDirectory =Path.Combine(mainDirectory + $"\\{currentTime:yyyyMMdd_HHmmss}");
-        }
+        
         
         string folderPath = folderDirectory;
 
@@ -171,6 +175,9 @@ public static List<Creature> PullData(int gen){
         {
             Console.WriteLine($"Error: {ex.Message}");
         }
+    
+    }
+    
     }
     public static void MakeGenFolder()
     {

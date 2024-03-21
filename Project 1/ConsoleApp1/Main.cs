@@ -6,8 +6,7 @@ static partial class Control
         Console.WriteLine("Welcome to MyProgram!");
         Setup();
         Run(2);
-
-        Run(2);
+   
         
      
       

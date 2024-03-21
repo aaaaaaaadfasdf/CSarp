@@ -26,7 +26,10 @@ public partial class Creature
             ImpDirectionN,
             ImpDirectionO,
             ImpDirectionS,
-            ImpDirectionW
+            ImpDirectionW,
+            X,
+            Y,
+      
      
 
 
@@ -36,7 +39,7 @@ public partial class Creature
 
         for (int i = 0; i < remember.Count; i++)
         {
-            //input.Add(RememberInp);
+         //   input.Add(RememberInp);
         }
 
     }
@@ -149,7 +152,7 @@ public float Random(){
 
 
 public float  Sicle(){
-    return (float)1 / (Control.stepCount%20 + 1);
+    return (float)1 / (Control.stepCount%50 + 1);
 }
 
 
