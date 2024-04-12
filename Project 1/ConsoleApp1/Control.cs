@@ -39,7 +39,7 @@ static partial class Control
 
     public static List<int> saveData = [];
 
-    public static string mainDirectory = "C:\\Users\\jonat\\OneDrive - SBL\\Desktop\\SaveFolder";//"C:\\Users\\jonat\\OneDrive - SBL\\Dokumente\\SaveFolder";// AppDomain.CurrentDomain.BaseDirectory;
+    public static string mainDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"SaveFolder");
 
     static Random r = new();
 
@@ -148,7 +148,7 @@ static partial class Control
 
         // look condition
 
-        int averageX = 0;
+        float averageX = 0;
         int median = 0;
 
         // find out where the average lies
@@ -156,7 +156,7 @@ static partial class Control
         {
             averageX += data[i].x;
         }
-        averageX /= data.Count;
+        averageX /= (float)data.Count;
         // splice out the bader haf
         while (data.Count > pop / 2)
         {
@@ -168,6 +168,7 @@ static partial class Control
                 }
             }
             data.RemoveAt(median);
+            median =0;
 
         }
 
@@ -271,25 +272,13 @@ static partial class Control
 
 
 
-        Console.WriteLine($"Generation {generationCount} of {generationEnd}, {survived}% survived, avergage x {averageX} ");
-
-
-
-    }
-
-
-    public static void Info()
-    {
-        Console.WriteLine("Functions");
-        Console.WriteLine("Run(index)     takes how many gen it should run");
-        Console.WriteLine("Animate(index  takes which generaiton to run)");
-        Console.WriteLine("");
-        Console.WriteLine("Variables");
-        Console.WriteLine("folderDirectory  give it the directory of the disired folder in which you can Run() or Animate() you can also continue on a run");
-        Console.WriteLine("generationLength says how many steps occure in a generation");
+        Console.WriteLine($"Generation {generationCount} of {generationEnd},  average x position {averageX} ");
+        SaveSurvival( generationEnd,  averageX);
 
 
     }
+
+
 
 }
 
