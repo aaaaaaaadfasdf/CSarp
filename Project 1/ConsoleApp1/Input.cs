@@ -39,7 +39,7 @@ public partial class Creature
 
         for (int i = 0; i < remember.Count; i++)
         {
-         //   input.Add(RememberInp);
+           input.Add(RememberInp);
         }
 
     }

@@ -1,4 +1,5 @@
 
+using System.Security.Cryptography.X509Certificates;
 using MathNet.Numerics.LinearAlgebra;
 
 
@@ -8,24 +9,36 @@ public partial class Creature
 {
 
     static Random r = new();
-    public int x = 100;
-    public int y = 100;
+    public int x ;
+    public int xAfterSep ;
+    public int y ;
+    public int yAfterSep;
+
+    // Food
+    public int food = 0;
+    public static int minimumFoodRequirement = 200; // how mutch food there needs to be for a Creatur to make a Child
+    public static int maxFoodToAttack = 20; // This mutch food can you have and still attack
+    
+    public static int gainFoodFromCreatur = 20;
+    public bool iFrames = false;
+    public static int gainFoodFromSunlight = 5;
+
 
 
 
     // Muatation variables
     // the Mutation is alway countet in how many mutation per nural network 
     // all the Change variable declare how big the change is in + and - 
-    public const float mutationChance = 1f;
+    public const float mutationChance = 10f;
     public const float mutationChange = .01f;
-    public const float mutationRandom = .001f;
+    public const float mutationRandom = .01f;
 
 
-    public const float mutationBiasChance = .1f;
+    public const float mutationBiasChance = 10f;
     public const float mutationBiasChange = .01f;
-    const float mutationRandomBias = .001f;
+    const float mutationRandomBias = .01f;
 
-    public const float mutationSwitchChance = .1f;
+    public const float mutationSwitchChance = .5f;
 
     public const float ChanceToDeepMutate = .2f;
     public const float DeepMutateChange = .1f;
@@ -191,6 +204,9 @@ public const float totoalLinks =0.5f; // how many percent of the connenction are
 
     public void RunBrain()
     {
+        // To check if a creatur as moved when not i give them food
+        xAfterSep=x;
+        yAfterSep=y;
 
         // getting Imputvalues
         actVec = Vector<float>.Build.Random(input.Count + bias);
@@ -218,7 +234,7 @@ public const float totoalLinks =0.5f; // how many percent of the connenction are
         for (int i = 0; i < valVec.Count; i++)
         {
             // this updates the rememberCounter so the RememberOut knows which element of the array it should update
-            if (output[i] == RememberOut)
+            if (output[i] == RememberOutPos)
             {
                 rememberCounter += 1;
             }
@@ -233,6 +249,12 @@ public const float totoalLinks =0.5f; // how many percent of the connenction are
 
 
 
+        }
+
+
+        // To check if a creatur as moved when not i give them food
+        if(x==xAfterSep &&y==yAfterSep){
+            food+=gainFoodFromSunlight;
         }
 
 
@@ -281,7 +303,7 @@ public const float totoalLinks =0.5f; // how many percent of the connenction are
                     {
 
 
-
+                        // change a random Value
                         matrix[i, j] += (float)(r.NextDouble() * mutationChange * 2 - mutationChange);
 
                         if (matrix[i, j] > 1)
@@ -294,7 +316,7 @@ public const float totoalLinks =0.5f; // how many percent of the connenction are
                         }
 
                     }
-
+                    // jump to a random alue
                     if (r.NextDouble() < mutationRandomPerVAl)
                     {
 
@@ -325,9 +347,11 @@ float mutationRandomBiasPerVal =mutationRandomBias/toalNetValCount;
             if (r.NextDouble() < mutationBiasChancePerVal)
             {
 
+                if(matrix[i, matrix.ColumnCount - 1]!=0){
 
 
 
+                // change value +- a ceratain value
                 matrix[i, matrix.ColumnCount - 1] += (float)(r.NextDouble() * 2 * mutationBiasChange - mutationBiasChange);
 
                 if (matrix[i, matrix.ColumnCount - 1] > 5)
@@ -342,7 +366,7 @@ float mutationRandomBiasPerVal =mutationRandomBias/toalNetValCount;
             }
 
 
-
+            // change value to a certain value
             if (r.NextDouble() < mutationRandomBiasPerVal)
             {
 
@@ -351,7 +375,7 @@ float mutationRandomBiasPerVal =mutationRandomBias/toalNetValCount;
 
             }
 
-
+}
 
         }
         // switch two values of the links
@@ -406,6 +430,8 @@ float mutationRandomBiasPerVal =mutationRandomBias/toalNetValCount;
                 if (matrix[i, matrix.ColumnCount - 1] != 0)
                 {
 
+                    
+
 
 
                     matrix[i, matrix.ColumnCount - 1] += (float)(r.NextDouble() * DeepMutateChange * 2 - DeepMutateChange);
@@ -421,6 +447,8 @@ float mutationRandomBiasPerVal =mutationRandomBias/toalNetValCount;
 
                 }
             }
+       
+       
         }
         return matrix;
     }

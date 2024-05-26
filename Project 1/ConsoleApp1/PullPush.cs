@@ -27,6 +27,29 @@ using System.Reflection;
 
     }
     
+    public static void  SaveSurvival(int generationEnd, float averageX){
+
+        string filePath = Path.Combine(folderDirectory,"Survival.txt");
+
+        // Check if the file exists
+        if (!File.Exists(filePath))
+        {
+            // File doesn't exist, create it
+            using (FileStream fs = File.Create(filePath))
+            {
+                            
+                            
+            }
+
+        }
+      
+
+        using (StreamWriter writer = File.AppendText(filePath))
+        {
+            writer.WriteLine($"Generation {generationCount} of {generationEnd},  average x position {averageX} ");
+
+        }
+    }
 public static List<Creature> PullPositions(int gen, int step,List<Creature> upData){
 
         
@@ -78,7 +101,7 @@ public static List<Creature> PullData(int gen){
         string filePath = Path.Combine(folderDirectory,"Gen"+gen,"data.txt");
       
 
-
+  
                        // Read all lines from the file into an array
                 string[] lines = File.ReadAllLines(filePath);
 
@@ -131,15 +154,15 @@ public static List<Creature> PullData(int gen){
              
             
 
-            
-          
-        return dataFromFile;
-
         try
         {
              
            
+          
+
             
+          
+        return dataFromFile;
 
         }
         catch (Exception ex)

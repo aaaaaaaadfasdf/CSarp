@@ -377,7 +377,6 @@ C:\Users\jonat\OneDrive - SBL\Desktop\CSharp\CSharp\Project 1\ConsoleApp1\obj\De
 C:\Users\jonat\OneDrive - SBL\Desktop\CSharp\CSharp\Project 1\ConsoleApp1\obj\Debug\net8.0-windows\ConsoleApp1.AssemblyInfo.cs
 C:\Users\jonat\OneDrive - SBL\Desktop\CSharp\CSharp\Project 1\ConsoleApp1\obj\Debug\net8.0-windows\ConsoleApp1.csproj.CoreCompileInputs.cache
 C:\Users\jonat\OneDrive - SBL\Desktop\CSharp\CSharp\Project 1\ConsoleApp1\obj\Debug\net8.0-windows\ConsoleApp1.sourcelink.json
-C:\Users\jonat\OneDrive - SBL\Desktop\CSharp\CSharp\Project 1\ConsoleApp1\obj\Debug\net8.0-windows\ConsoleApp1.csproj.CopyComplete
 C:\Users\jonat\OneDrive - SBL\Desktop\CSharp\CSharp\Project 1\ConsoleApp1\obj\Debug\net8.0-windows\ConsoleApp1.dll
 C:\Users\jonat\OneDrive - SBL\Desktop\CSharp\CSharp\Project 1\ConsoleApp1\obj\Debug\net8.0-windows\refint\ConsoleApp1.dll
 C:\Users\jonat\OneDrive - SBL\Desktop\CSharp\CSharp\Project 1\ConsoleApp1\obj\Debug\net8.0-windows\ConsoleApp1.pdb
@@ -427,3 +426,6 @@ c:\Users\jonat\OneDrive - SBL\Desktop\CSharp\CSharp\Project 1\ConsoleApp1\bin\De
 c:\Users\jonat\OneDrive - SBL\Desktop\CSharp\CSharp\Project 1\ConsoleApp1\bin\Debug\net8.0-windows\tr\Microsoft.CodeAnalysis.Scripting.resources.dll
 c:\Users\jonat\OneDrive - SBL\Desktop\CSharp\CSharp\Project 1\ConsoleApp1\bin\Debug\net8.0-windows\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
 c:\Users\jonat\OneDrive - SBL\Desktop\CSharp\CSharp\Project 1\ConsoleApp1\bin\Debug\net8.0-windows\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\Users\jonat\OneDrive - SBL\Desktop\CSharp\CSharp\Project 1\ConsoleApp1\bin\Debug\net8.0-windows\OpenCvSharp.dll
+C:\Users\jonat\OneDrive - SBL\Desktop\CSharp\CSharp\Project 1\ConsoleApp1\bin\Debug\net8.0-windows\OpenCvSharp.Extensions.dll
+C:\Users\jonat\OneDrive - SBL\Desktop\CSharp\CSharp\Project 1\ConsoleApp1\obj\Debug\net8.0-windows\ConsoleA.CB28C8CC.Up2Date
