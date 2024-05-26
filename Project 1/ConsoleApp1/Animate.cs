@@ -1,4 +1,6 @@
 using System.Drawing.Drawing2D;
+using OpenCvSharp;
+using OpenCvSharp.Extensions;
 
 
 
@@ -30,7 +32,7 @@ class MainProgram : Form
         DoubleBuffered = true;
 
         // Set up the form
-        Size = new Size(Window.x + 16, Window.y + 38);
+        Size = new System.Drawing.Size(Window.x + 16, Window.y + 38);
         Text = "C# Animation Example";
         Grid.space = (float)this.ClientSize.Width / ((float)Grid.x);
 
@@ -122,9 +124,6 @@ class MainProgram : Form
 
 
 
-
-
-
 class AnimatGen : Form
 {
 
@@ -148,8 +147,8 @@ class AnimatGen : Form
         DoubleBuffered = true;
 
         // Set up the form
-        Size = new Size(Window.x + 16, Window.y + 38);
-        Text = "C# Animation Example";
+        Size = new System.Drawing.Size(Window.x + 16, Window.y + 38);
+        Text = $"Generation {aniGen}";
         Grid.space = (float)this.ClientSize.Width / ((float)Grid.x);
         aniData = Control.PullData(aniGen);
         // Create a timer to update the animation
@@ -201,10 +200,10 @@ class AnimatGen : Form
 
 
 
-        for (int i = 0; i < Control.pop; i++)
+        for (int i = 0; i < Control.data.Count; i++)
         {
 
-            Creature inc =aniData[i];
+            Creature inc = aniData[i];
 
             Color myColor = Color.FromArgb((int)((inc.inputNetwork.FrobeniusNorm() * 25) % 255),
             (int)((inc.network[0].FrobeniusNorm() * 25) % 255),
@@ -231,7 +230,7 @@ class AnimatGen : Form
                 if (Grid.Map[i, j] == 1)
                 {
                     e.Graphics.FillRectangle(
-                        Brushes.Black,
+                        Brushes.CornflowerBlue,
                         new Rectangle(
                             (int)(i * Grid.space),
                             (int)(j * Grid.space),
