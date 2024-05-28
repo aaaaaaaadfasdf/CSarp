@@ -1,5 +1,4 @@
 
-using System.Security.Cryptography.X509Certificates;
 using MathNet.Numerics.LinearAlgebra;
 
 
@@ -9,20 +8,8 @@ public partial class Creature
 {
 
     static Random r = new();
-    public int x ;
-    public int xAfterSep ;
-    public int y ;
-    public int yAfterSep;
-
-    // Food
-    public int food = 0;
-    public static int minimumFoodRequirement = 200; // how mutch food there needs to be for a Creatur to make a Child
-    public static int maxFoodToAttack = 20; // This mutch food can you have and still attack
-    
-    public static int gainFoodFromCreatur = 20;
-    public bool iFrames = false;
-    public static int gainFoodFromSunlight = 5;
-
+    public int x = 100;
+    public int y = 100;
 
 
 
@@ -204,9 +191,6 @@ public const float totoalLinks =0.5f; // how many percent of the connenction are
 
     public void RunBrain()
     {
-        // To check if a creatur as moved when not i give them food
-        xAfterSep=x;
-        yAfterSep=y;
 
         // getting Imputvalues
         actVec = Vector<float>.Build.Random(input.Count + bias);
@@ -249,12 +233,6 @@ public const float totoalLinks =0.5f; // how many percent of the connenction are
 
 
 
-        }
-
-
-        // To check if a creatur as moved when not i give them food
-        if(x==xAfterSep &&y==yAfterSep){
-            food+=gainFoodFromSunlight;
         }
 
 

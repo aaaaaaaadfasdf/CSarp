@@ -6,22 +6,20 @@ using System.Threading.Tasks.Dataflow;
 using ILNumerics.F2NET.Formatting;
 using MathNet.Numerics.LinearAlgebra;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using OpenTK.Graphics.ES11;
 
 
 static partial class Control
 {
-    public const int sizex = 500;
-    public const int sizey = 500;
-    public const int pop = 10;
-    public const int gridx = 100;
+    public const int sizex = 5000;
+    public const int sizey = 1000;
+    public const int pop = 1000;
+    public const int gridx = 500;
     public const int gridy = 100;
     public static int generationLength = 100;
     public static List<Creature> Storedata = [];
     static int generationCount = 0;
     public static int stepCount = 0;
 
-     
 
 
 
@@ -29,8 +27,7 @@ static partial class Control
 
 
 
-
-    public static  string folderDirectory;
+    public static string folderDirectory;
     static readonly DateTime currentTime = DateTime.Now;
 
 
@@ -42,7 +39,7 @@ static partial class Control
 
     public static List<int> saveData = [];
 
-    public static string mainDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SaveFolder");
+    public static string mainDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"SaveFolder");
 
     static Random r = new();
 
@@ -91,8 +88,6 @@ static partial class Control
 
         }
 
-
-        // Run it for as manny generations as the user says
         stepCount = 0;
         generationEnd += generationCount;
         while (generationCount < generationEnd)
@@ -125,63 +120,25 @@ static partial class Control
         MakeGenFolder();
 
 
+        // Randomly distribiute
+        for (int i = 0; i < data.Count; i++)
+        {
+            data[i].x = r.Next(Grid.x / 100);
+            data[i].y = r.Next(Grid.y);
+        }
 
 
         // Run Gen
         while (stepCount < generationLength)
         {
-
-            // Pass where the Creaturs are to the Map
-            for (int i = 0; i < data.Count; i++)
-            {
-                Grid.Map[data[i].x, data[i].y] = Grid.creatur;
-
-            }
-
             SaveStep();
-            for (int i = 0; i < data.Count; i++)
+            for (int j = 0; j < pop; j++)
             {
-                data[i].RunBrain();
+                data[j].RunBrain();
+
+
 
             }
-
-            // Kill all Creatures that are on a steptOn field and have not moved;
-            for (int i = 0; i < data.Count; i++)
-            {
-                if (Grid.Map[data[i].x, data[i].y] == Grid.steptOn && !data[i].iFrames)
-                {
-                    Grid.Map[data[i].x, data[i].y] = Grid.food;
-                    data.RemoveAt(i);
-                }
-
-            }
-
-            // let all creatures that are on a food field gain food
-            for (int i = 0; i < data.Count; i++)
-            {
-                if (Grid.Map[data[i].x, data[i].y] == Grid.food)
-                {
-                    data[i].food += Creature.gainFoodFromCreatur;
-                }
-
-            }
-
-            // delet all food
-            for (int i = 0; i < data.Count; i++)
-            {
-                if (Grid.Map[data[i].x, data[i].y] == Grid.food)
-                {
-                    Grid.Map[data[i].x, data[i].y] = Grid.creatur;
-                }
-
-                // Remove i Frames 
-                data[i].iFrames=false;
-
-            }
-
-
-
-
             stepCount += 1;
 
         }
@@ -189,11 +146,125 @@ static partial class Control
 
 
 
+        // look condition
+
+        float averageX = 0;
+        int median = 0;
+
+        // find out where the average lies
+        for (int i = 0; i < data.Count; i++)
+        {
+            averageX += data[i].x;
+        }
+        averageX /= (float)data.Count;
+        // splice out the bader haf
+        while (data.Count > pop / 2)
+        {
+            for (int i = 0; i < data.Count; i++)
+            {
+                if (data[i].x < data[median].x)
+                {
+                    median = i;
+                }
+            }
+            data.RemoveAt(median);
+            median =0;
+
+        }
+
+
+        float survived = data.Count / (float)pop * 100;
 
 
 
+        // fill up with children
+        saveData.Clear();
+        for (int i = 0; i < data.Count; i++)
+        {
+            saveData.Add(i);
+        }
+
+        while (pop > data.Count)
+        {
+            if (saveData.Count == 0)
+            {
+                for (int i = 0; i < data.Count; i++)
+                {
+                    saveData.Add(i);
+                }
+            }
+            // so that every gets equal children and its not just random
+            // to make an istance and not just a refrenc
+            Creature creCopy = new();
+            int selectRan = r.Next(0, saveData.Count);
+            Creature getCre = data[saveData[selectRan]];
+            saveData.RemoveAt(selectRan);
+            creCopy.x = getCre.x;
+            creCopy.y = getCre.y;
 
 
+
+            for (int i = 0; i < getCre.inputNetwork.RowCount; i++)
+            {
+                for (int j = 0; j < getCre.inputNetwork.ColumnCount; j++)
+                {
+                    creCopy.inputNetwork[i, j] = getCre.inputNetwork[i, j];
+                }
+            }
+
+            // get the network
+            for (int i = 0; i < getCre.network.Count; i++)
+            {
+
+
+                for (int j = 0; j < getCre.network[i].RowCount; j++)
+                {
+                    for (int k = 0; k < getCre.network[i].ColumnCount; k++)
+                    {
+                        creCopy.network[i][j, k] = getCre.network[i][j, k];
+                    }
+                }
+            }
+
+
+            // get the output
+            for (int i = 0; i < getCre.outputNetwork.RowCount; i++)
+            {
+                for (int j = 0; j < getCre.outputNetwork.ColumnCount; j++)
+                {
+                    creCopy.outputNetwork[i, j] = getCre.outputNetwork[i, j];
+                }
+            }
+
+
+            // Mutate
+            creCopy.MutateBrain();
+            data.Add(creCopy);
+
+
+
+        }
+
+        // 2 options 1. Mutate everybody or Mutate only children
+        for (int i = 0; i < data.Count; i++)
+        {
+            //data[i].MutateBrain();
+        }
+
+
+        // set all remember neurons to 0
+        for (int i = 0; i < data.Count; i++)
+        {
+
+            for (int j = 0; j < data[i].remember.Count; j++)
+            {
+                data[i].remember[j] = 0;
+
+            }
+
+
+
+        }
 
         // Push the calculated Data
         PushGenData();
@@ -201,21 +272,11 @@ static partial class Control
 
 
 
-        Console.WriteLine($"Generation {generationCount} of {generationEnd},  Population {data.Count} ");
-        SaveSurvival(generationEnd, data.Count);
+        Console.WriteLine($"Generation {generationCount} of {generationEnd},  average x position {averageX} ");
+        SaveSurvival( generationEnd,  averageX);
 
 
     }
-
-    public static void RunStep()
-    {
-
-
-
-
-    }
-
-
 
 
 

@@ -200,7 +200,7 @@ class AnimatGen : Form
 
 
 
-        for (int i = 0; i < Control.data.Count; i++)
+        for (int i = 0; i < Control.pop; i++)
         {
 
             Creature inc = aniData[i];
